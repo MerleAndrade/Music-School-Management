@@ -10,7 +10,6 @@ import axios from "axios";
       .then((response) => response.data)
       .then(setMessage)
 
-
   return (
     <h1>Hello</h1>
   );
