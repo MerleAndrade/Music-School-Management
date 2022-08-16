@@ -41,7 +41,7 @@ jobs:
       - uses: actions/upload-artifact@v2
         with:
           name: backend-build
-          path: backend/target/musicschoolmanagement.jar
+          path: backend/target/music-school-management.jar
 
   deploy:
     runs-on: ubuntu-latest
