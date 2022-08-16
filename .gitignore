@@ -9,3 +9,4 @@
 /frontend/build/
 /backend/src/main/resources/static/
 .idea
+/frontend.iml
