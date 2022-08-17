@@ -3,6 +3,6 @@
 
 
   return (
-    <h1>Hallo DU!</h1>
+    <h1>Grüß Sie Gott!</h1>
   );
 }

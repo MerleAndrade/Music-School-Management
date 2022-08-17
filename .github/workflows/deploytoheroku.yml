@@ -48,7 +48,7 @@ jobs:
     needs: build-backend
     environment:
       name: Produktion Heroku
-      url: https://music-school-management.herokuapp.com/
+      url: https://music-school-management.herokuapp.com
     env:
       HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
     steps:
