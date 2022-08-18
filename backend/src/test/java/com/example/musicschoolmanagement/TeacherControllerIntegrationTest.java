@@ -7,12 +7,14 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
 
+import static org.hamcrest.Matchers.hasSize;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class TeacherControllerIntegrationTest {
+ class TeacherControllerIntegrationTest {
 
     @Autowired
     MockMvc mockMvc;
@@ -20,7 +22,8 @@ public class TeacherControllerIntegrationTest {
     @Test
     void getAllTeachers() throws Exception {
         mockMvc.perform(get("/api/teachers"))
-                .andExpect(status().isOk());
+                .andExpect(status().isOk())
+        .andExpect(jsonPath("$", hasSize(0)));
     }
 
 }
