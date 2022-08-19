@@ -22,7 +22,10 @@ class TeacherControllerIntegrationTest {
     void getAllTeachers() throws Exception {
         mockMvc.perform(get("/api/teachers"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$", hasSize(0)));
+                .andExpect(jsonPath("$", hasSize(0)))
+                .andExpect(content().json( """
+                []
+                """));
 
     }
 
