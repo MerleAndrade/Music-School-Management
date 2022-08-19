@@ -16,9 +16,9 @@ import static org.mockito.Mockito.when;
 class TeacherServiceTest {
 
     private final TeacherRepo testTeacherRepo = mock(TeacherRepo.class);
-    private final TeacherService testTeacherService = new TeacherService(testTeacherRepo);
+    private final TeacherService teacherService = new TeacherService(testTeacherRepo);
 
-    private final List<Teacher> testList = List.of(
+    private final List<Teacher> list = List.of(
             new Teacher("123", "Carlotta", "Meier", "Geige"),
             new Teacher("456", "Linus", "Müller", "Schlagzeug"),
             new Teacher("789", "Josephine", "Huber", "Gesang")
@@ -28,13 +28,13 @@ class TeacherServiceTest {
     @DisplayName("ListOfAllTeacher")
             void getAllTeacher() {
         //given
-        when(testTeacherRepo.findAll()).thenReturn(testList);
+        when(testTeacherRepo.findAll()).thenReturn(list);
 
         //when
-        List<Teacher> actual = testTeacherService.getAllTeachers();
+        List<Teacher> actual = teacherService.getAllTeachers();
 
         //then
-        Assertions.assertArrayEquals(testList.toArray(),actual.toArray());
+        Assertions.assertArrayEquals(list.toArray(),actual.toArray());
     }
 
 }
