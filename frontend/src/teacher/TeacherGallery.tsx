@@ -18,7 +18,7 @@ export default function TeacherGallery (props: TeacherGalleryProps){
                </tr>
 
                {props.teachers.map(teacher =>
-                   <tr>
+                   <tr key={teacher.id}>
                    <td>{teacher.firstName}</td>
                    <td>{teacher.lastName}</td>
                    <td>{teacher.instrument}</td>

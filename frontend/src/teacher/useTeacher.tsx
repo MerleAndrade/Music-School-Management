@@ -15,8 +15,6 @@ export default function useTeacher(){
         axios.get("/api/teachers")
             .then((response) => response.data)
             .then((data) => setTeachers(data))
-
     }
-
     return{teachers}
 }
