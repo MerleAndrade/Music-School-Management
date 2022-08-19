@@ -6,13 +6,25 @@ type TeacherGalleryProps = {
 
 export default function TeacherGallery (props: TeacherGalleryProps){
 
+
     return(
-        <>
-            <ul>
-                {props.teachers.map(teacher => (
-                    <li key = {teacher.id}>
-                        {teacher.firstName} {teacher.lastName} {teacher.instrument}</li>))}
-            </ul>
-        </>
+       <div>
+           <h2>aktuelle Lehrerliste</h2>
+           <table>
+               <tr>
+                   <th>Vorname</th>
+                   <th>Nachname</th>
+                   <th>Instrument</th>
+               </tr>
+
+               {props.teachers.map(teacher =>
+                   <tr>
+                   <td>{teacher.firstName}</td>
+                   <td>{teacher.lastName}</td>
+                   <td>{teacher.instrument}</td>
+                   </tr>
+                   )}
+           </table>
+       </div>
     )
 }
