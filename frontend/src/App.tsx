@@ -1,18 +1,17 @@
 
-import AllRoutes from "./AllRoutes";
-import Header from "./Header";
-import Footer from "./Footer";
+import AllRoutes from "./components/AllRoutes";
+import Footer from "./components/Footer";
 import {HashRouter} from "react-router-dom";
+import React from "react";
+import Header from "./components/Header";
 
-export default function App() {
-
-  return (
-      <HashRouter>
-          <Header/>
-          <main>
-          <AllRoutes/>
-          </main>
-          <Footer/>
-      </HashRouter>
-                  );}
-
+function App() {
+    return (
+        <HashRouter>
+            <Header/>
+            <AllRoutes/>
+            <Footer/>
+        </HashRouter>
+    );
+}
+export default App;
