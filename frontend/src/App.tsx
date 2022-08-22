@@ -1,23 +1,18 @@
-import TeacherGallery from "./teacher/TeacherGallery";
-import useTeacher from "./teacher/useTeacher";
-import {HashRouter, Route, Routes} from "react-router-dom";
-import AddTeacherFormular from "./teacher/AddTeacherFormular";
-import Home from "./Home";
+
+import AllRoutes from "./AllRoutes";
+import Header from "./Header";
+import Footer from "./Footer";
+import {HashRouter} from "react-router-dom";
 
 export default function App() {
 
-  const {teachers, addTeacher} = useTeacher();
-
   return (
       <HashRouter>
-          <Routes>
-              <Route path ={"/"}
-                     element={<Home/>}/>
-              <Route path = {"/"}
-                     element = {<TeacherGallery teachers={teachers}/>}/>
-              <Route path = {"/teachers"}
-                     element = {<AddTeacherFormular addTeacher={addTeacher}/>}/>
-          </Routes>
+          <Header/>
+          <main>
+          <AllRoutes/>
+          </main>
+          <Footer/>
       </HashRouter>
                   );}
 
