@@ -1,5 +1,5 @@
-import {ChangeEvent, FormEvent, useState} from "react";
 import {NewTeacher, Teacher} from "./Teacher";
+import {FormEvent, useState} from "react";
 
 type AddTeacherFormularProps = {
     addTeacher: (newTeacher: NewTeacher) => Promise <Teacher>;
@@ -27,6 +27,10 @@ export default function AddTeacherFormular(props: AddTeacherFormularProps) {
         <form onSubmit ={handleSubmit}>
             <label form="firstName">Vorname: </label>
             <input type={"text"} onFocus={(event) => event.target.select()} name={"firstName"} onChange={(event) => setFirstName(event.target.value)}/>
+            <label form="lastName">Nachname: </label>
+            <input type={"text"} onFocus={(event) => event.target.select()} name={"lastName"} onChange={(event) => setLastName(event.target.value)}/>
+            <label form="instrument">Instrument: </label>
+            <input type={"text"} onFocus={(event) => event.target.select()} name={"instrument"} onChange={(event) => setInstrument(event.target.value)}/>
             <button type={"submit"}>Speichern</button>
 </form>
     )

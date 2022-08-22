@@ -14,9 +14,9 @@ export default function AllRoutes () {
                 <Route path ={"/"}
                        element={<Home/>}/>
                 <Route path = {"/teachers"}
-                       element = {<TeacherGallery teachers={teachers}/>}/>
-                <Route path = {"/teachers"}
                        element = {<AddTeacherFormular addTeacher={addTeacher}/>}/>
+                <Route path = {"/teachers"}
+                       element = {<TeacherGallery teachers={teachers}/>}/>
             </Routes>
 
         </>
