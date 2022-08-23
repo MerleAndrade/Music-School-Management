@@ -1,0 +1,20 @@
+button {
+    display:inline-block;
+    padding:0.70em 2.4em;
+    border:0.1em solid #fff;
+    margin:0 0.6em 0.3em 0;
+    border-radius:0.12em;
+    box-sizing: border-box;
+    text-decoration:none;
+    font-family:'Poppins',sans-serif;
+    font-weight:300;
+    color:#fff;
+    text-align:center;
+    transition: all 0.2s;
+    background: #486f73;
+
+}
+button:hover{
+    color:#fff;
+    background-color:#E1694E;
+}

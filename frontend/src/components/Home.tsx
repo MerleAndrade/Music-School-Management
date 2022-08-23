@@ -1,8 +1,8 @@
 import {useEffect, useState} from "react";
 import {NavLink} from "react-router-dom";
-import {Button} from "@mui/material";
 import {NewTeacher, Teacher} from "../teacher/Teacher";
 import AddTeacherFormular from "../teacher/AddTeacherFormular";
+import "./home.css"
 
 
 type HomeProps ={
@@ -20,7 +20,7 @@ export default function Home (props: HomeProps) {
     return (
         <nav className= "menu">
             <NavLink className={"nav"} onClick={() => setTab("Teacher")} to={'/teachers'}>
-                <Button variant="outlined" color="success">Lehrerliste</Button>
+                <button className="button">Lehrerliste</button>
             </NavLink>
             <AddTeacherFormular addTeacher={props.addTeacher}/>
         </nav>
