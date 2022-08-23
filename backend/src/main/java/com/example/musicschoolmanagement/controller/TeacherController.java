@@ -1,6 +1,5 @@
 package com.example.musicschoolmanagement.controller;
 
-
 import com.example.musicschoolmanagement.model.NewTeacher;
 import com.example.musicschoolmanagement.model.Teacher;
 import com.example.musicschoolmanagement.model.TeacherService;
@@ -18,12 +17,10 @@ public class TeacherController {
         this.teacherService = teacherService;
     }
 
-
     @GetMapping
     public List<Teacher> getAllTeachers() {
         return teacherService.getAllTeachers();
     }
-
 
     @PostMapping
     @ResponseStatus(code = HttpStatus.CREATED)

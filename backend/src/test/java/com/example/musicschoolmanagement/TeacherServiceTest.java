@@ -35,7 +35,6 @@ class TeacherServiceTest {
 
         //then
         assertThat(actual).hasSameElementsAs(testList);
-
     }
 
     @Test
@@ -51,8 +50,5 @@ class TeacherServiceTest {
 
         // then
         Assertions.assertEquals(testTeacher, actual);
-
     }
 }
-
-

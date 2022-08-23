@@ -3,10 +3,8 @@ import {ChangeEvent, FormEvent, useState} from "react";
 import {toast} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
-
 type AddTeacherFormularProps = {
-    addTeacher: (newTeacher: NewTeacher) => Promise <Teacher>;
-}
+    addTeacher: (newTeacher: NewTeacher) => Promise <Teacher>; }
 
 export default function AddTeacherFormular(props: AddTeacherFormularProps) {
 
@@ -14,7 +12,6 @@ export default function AddTeacherFormular(props: AddTeacherFormularProps) {
     const[lastName, setLastName] = useState<string> ("");
     const[instrument, setInstrument] = useState<string> ("");
     const [errorMessage, setErrorMessage] = useState("");
-
 
     const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -32,9 +29,7 @@ export default function AddTeacherFormular(props: AddTeacherFormularProps) {
                     setErrorMessage(error.response.data.message)
                 });
         }
-
     }
-
     return(
         <form onSubmit ={handleSubmit}>
             <h1>Neuen Lehrer hinzufügen</h1>
@@ -51,6 +46,4 @@ export default function AddTeacherFormular(props: AddTeacherFormularProps) {
             <button type={"submit"}>Speichern</button>
 </form>
     )
-
-
 }

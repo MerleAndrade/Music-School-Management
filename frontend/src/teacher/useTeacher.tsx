@@ -2,7 +2,6 @@ import axios from "axios";
 import {useEffect, useState} from "react";
 import {NewTeacher, Teacher} from "./Teacher";
 
-
 export default function useTeacher(){
 
     const[teachers, setTeachers]= useState<Teacher[]> ([]);
@@ -24,6 +23,5 @@ export default function useTeacher(){
             .then((response) => {getAllTeachers()
             return response.data})
     }
-
     return{teachers, addTeacher}
 }
