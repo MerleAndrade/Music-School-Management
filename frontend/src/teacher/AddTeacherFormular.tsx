@@ -2,6 +2,8 @@ import {NewTeacher, Teacher} from "./Teacher";
 import {ChangeEvent, FormEvent, useState} from "react";
 import {toast} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import "./addteacherformular.css"
+import {Button} from "@mui/material";
 
 type AddTeacherFormularProps = {
     addTeacher: (newTeacher: NewTeacher) => Promise <Teacher>; }
@@ -31,7 +33,7 @@ export default function AddTeacherFormular(props: AddTeacherFormularProps) {
         }
     }
     return(
-        <form onSubmit ={handleSubmit}>
+        <form id="registrationForm" onSubmit ={handleSubmit}>
             <h1>Neuen Lehrer hinzufügen</h1>
             <label htmlFor="firstName">Vorname:
             <input id="firstName" type={"text"}  name={"firstName"} onChange={(event: ChangeEvent<HTMLInputElement>) => setFirstName(event.target.value)} value={firstName}/>
@@ -43,7 +45,7 @@ export default function AddTeacherFormular(props: AddTeacherFormularProps) {
                 <input id="instrument" type={"text"}  name={"instrument"} onChange={(event: ChangeEvent<HTMLInputElement>) => setInstrument(event.target.value)} value={instrument}/>
             </label>
 
-            <button type={"submit"}>Speichern</button>
+            <Button type={"submit"} id="saveButton" variant="outlined" >Speichern</Button>
 </form>
     )
 }

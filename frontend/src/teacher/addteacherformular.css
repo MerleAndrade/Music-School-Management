@@ -1,0 +1,18 @@
+#saveButton {
+    background-color: #E1694E;
+    font-family: Poppins, serif;
+
+}
+
+#registrationForm {
+    margin-top: 2vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 15vh;
+    font-family: Poppins;
+    font-size: 16px;
+    align-items: center;
+
+}
+
