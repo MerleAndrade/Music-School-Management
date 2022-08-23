@@ -1,9 +1,9 @@
 import './header.css'
 
 export default function Header() {
-    return (
+    return(
         <header className="header-content">
-        <img src={"../pictures/mukoheader.png"} className="header-logo" alt="Muko-Logo" />
+            <img src={"../pictures/mukoheader.png"} className="header-logo" alt="Muko-Logo"/>
         </header>
     )
 }
