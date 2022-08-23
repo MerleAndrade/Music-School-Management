@@ -15,4 +15,8 @@ public class TeacherService {
     public List<Teacher> getAllTeachers() {
         return teacherRepo.findAll();
     }
+
+    public Teacher addTeacher(NewTeacher newTeacher) {
+        return teacherRepo.save(newTeacher.withRandomId());
+    }
 }

@@ -1,6 +1,6 @@
 import axios from "axios";
 import {useEffect, useState} from "react";
-import {Teacher} from "./Teacher";
+import {NewTeacher, Teacher} from "./Teacher";
 
 export default function useTeacher(){
 
@@ -16,5 +16,12 @@ export default function useTeacher(){
             .then((response) => response.data)
             .then((data) => setTeachers(data))
     }
-    return{teachers}
+
+    const addTeacher = (newTeacher: NewTeacher) => {
+
+        return axios.post("/api/teachers", newTeacher)
+            .then((response) => {getAllTeachers()
+            return response.data})
+    }
+    return{teachers, addTeacher}
 }
