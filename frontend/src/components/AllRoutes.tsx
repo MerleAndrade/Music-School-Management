@@ -1,7 +1,6 @@
 import useTeacher from "../teacher/useTeacher";
 import {Route, Routes} from "react-router-dom";
 import TeacherGallery from "../teacher/TeacherGallery";
-import AddTeacherFormular from "../teacher/AddTeacherFormular";
 import Home from "./Home";
 
 export default function AllRoutes () {
@@ -12,9 +11,7 @@ export default function AllRoutes () {
         <>
             <Routes>
                 <Route path ={"/"}
-                       element={<Home/>}/>
-                <Route path = {"/teachers"}
-                       element = {<AddTeacherFormular addTeacher={addTeacher}/>}/>
+                       element={<Home addTeacher={addTeacher}/>}/>
                 <Route path = {"/teachers"}
                        element = {<TeacherGallery teachers={teachers}/>}/>
             </Routes>

@@ -1,7 +1,15 @@
 import {useEffect, useState} from "react";
 import {NavLink} from "react-router-dom";
+import {Button} from "@mui/material";
+import {NewTeacher, Teacher} from "../teacher/Teacher";
+import AddTeacherFormular from "../teacher/AddTeacherFormular";
 
-export default function Home () {
+
+type HomeProps ={
+
+    addTeacher: (newTeacher: NewTeacher) => Promise <Teacher>;
+}
+export default function Home (props: HomeProps) {
 
     const [tab, setTab] = useState("Home");
 
@@ -11,8 +19,12 @@ export default function Home () {
 
     return (
         <nav className= "menu">
-            <NavLink className={"nav"} onClick={() => setTab("Teacher")} to={'/teachers'}><img src={"../pictures/teacher.png"} alt={"Teacher"}/></NavLink>
+            <NavLink className={"nav"} onClick={() => setTab("Teacher")} to={'/teachers'}>
+                <Button variant="outlined" color="success">Lehrerliste</Button>
+            </NavLink>
+            <AddTeacherFormular addTeacher={props.addTeacher}/>
         </nav>
+
 
     )
 }
