@@ -1,17 +1,19 @@
-.footer-content {
+.footer {
     position: fixed;
     left: 0;
     bottom: 0;
     width: 100%;
     background-color: #E1694E;
-    color: black;
-    text-align: center;
-    font-family: Poppins;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 40%;
 }
 
-.footer-logo {
-    height: 50px;
+.footer-text {
+    padding-left:20px;
+    float:left;
+    word-spacing:5px;
+    color: black;
+    font-family: Poppins;
+    font-size: 12px;
+
 }
+
+
