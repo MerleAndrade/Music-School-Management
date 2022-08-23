@@ -3,7 +3,6 @@ import {ChangeEvent, FormEvent, useState} from "react";
 import {toast} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import "./addteacherformular.css"
-import {Button} from "@mui/material";
 
 type AddTeacherFormularProps = {
     addTeacher: (newTeacher: NewTeacher) => Promise <Teacher>; }
@@ -33,19 +32,25 @@ export default function AddTeacherFormular(props: AddTeacherFormularProps) {
         }
     }
     return(
-        <form id="registrationForm" onSubmit ={handleSubmit}>
+        <form onSubmit ={handleSubmit}>
             <h1>Neuen Lehrer hinzufügen</h1>
-            <label htmlFor="firstName">Vorname:
-            <input id="firstName" type={"text"}  name={"firstName"} onChange={(event: ChangeEvent<HTMLInputElement>) => setFirstName(event.target.value)} value={firstName}/>
+            <ul className="form-style-1">
+            <li> <label htmlFor="firstName"> Vorname: <span className="required">*</span>
+            <input className="field-long" type={"text"}  name={"firstName"} onChange={(event: ChangeEvent<HTMLInputElement>) => setFirstName(event.target.value)} value={firstName}/>
             </label>
-            <label htmlFor="lastName">Nachname:
-                <input id="lastName" type={"text"}  name={"lastName"} onChange={(event: ChangeEvent<HTMLInputElement>) => setLastName(event.target.value)} value={lastName}/>
+            </li>
+            <li> <label htmlFor="lastName"> Nachname: <span className="required">*</span>
+            <input className="field-long" type={"text"}  name={"lastName"} onChange={(event: ChangeEvent<HTMLInputElement>) => setLastName(event.target.value)} value={lastName}/>
             </label>
-            <label htmlFor="instrument">Instrument:
-                <input id="instrument" type={"text"}  name={"instrument"} onChange={(event: ChangeEvent<HTMLInputElement>) => setInstrument(event.target.value)} value={instrument}/>
+            </li>
+            <li> <label htmlFor="instrument"> Instrument: <span className="required">*</span>
+            <input className="field-long" type={"text"}  name={"instrument"} onChange={(event: ChangeEvent<HTMLInputElement>) => setInstrument(event.target.value)} value={instrument}/>
             </label>
-
-            <Button type={"submit"} id="saveButton" variant="outlined" >Speichern</Button>
+            </li>
+            <li>
+            <input type="submit" value="Submit" />
+            </li>
+            </ul>
 </form>
     )
 }
