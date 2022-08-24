@@ -1,8 +1,8 @@
 package com.example.musicschoolmanagement.controller;
 
-import com.example.musicschoolmanagement.model.NewTeacher;
-import com.example.musicschoolmanagement.model.Teacher;
-import com.example.musicschoolmanagement.model.TeacherService;
+import com.example.musicschoolmanagement.teacher.NewTeacher;
+import com.example.musicschoolmanagement.teacher.Teacher;
+import com.example.musicschoolmanagement.teacher.TeacherService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;

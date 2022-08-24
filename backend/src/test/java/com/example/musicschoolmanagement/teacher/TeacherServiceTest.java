@@ -1,9 +1,5 @@
-package com.example.musicschoolmanagement;
+package com.example.musicschoolmanagement.teacher;
 
-import com.example.musicschoolmanagement.model.NewTeacher;
-import com.example.musicschoolmanagement.model.Teacher;
-import com.example.musicschoolmanagement.model.TeacherRepo;
-import com.example.musicschoolmanagement.model.TeacherService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
