@@ -1,6 +1,5 @@
 package com.example.musicschoolmanagement;
-import com.example.musicschoolmanagement.model.Teacher;
-import org.junit.jupiter.api.Assertions;
+import com.example.musicschoolmanagement.teacher.Teacher;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

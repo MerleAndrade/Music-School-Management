@@ -1,4 +1,4 @@
-package com.example.musicschoolmanagement.model;
+package com.example.musicschoolmanagement.teacher;
 
 import java.util.UUID;
 

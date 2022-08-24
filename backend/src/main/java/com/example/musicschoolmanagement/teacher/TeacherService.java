@@ -1,4 +1,4 @@
-package com.example.musicschoolmanagement.model;
+package com.example.musicschoolmanagement.teacher;
 
 import org.springframework.stereotype.Service;
 import java.util.List;
