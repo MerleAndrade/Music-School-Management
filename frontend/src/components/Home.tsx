@@ -3,10 +3,13 @@ import {NavLink} from "react-router-dom";
 import {NewTeacher, Teacher} from "../teacher/Teacher";
 import AddTeacherFormular from "../teacher/AddTeacherFormular";
 import "./home.css"
+import {NewStudent, Student} from "../student/Student";
+import AddStudentFormular from "../student/AddStudentFormular";
 
 type HomeProps ={
 
     addTeacher: (newTeacher: NewTeacher) => Promise <Teacher>;
+    addStudent: (newStudent: NewStudent) => Promise <Student>;
 }
 export default function Home (props: HomeProps) {
 
@@ -21,9 +24,12 @@ export default function Home (props: HomeProps) {
             <NavLink className={"nav"} onClick={() => setTab("Teacher")} to={'/teachers'}>
                 <button className="button">Lehrerliste</button>
             </NavLink>
+            <NavLink className={"nav"} onClick={() => setTab("Student")} to={'/students'}>
+                <button className="button">Schülerliste</button>
+            </NavLink>
+
             <AddTeacherFormular addTeacher={props.addTeacher}/>
+            <AddStudentFormular addStudent={props.addStudent}/>
         </nav>
-
-
     )
 }
