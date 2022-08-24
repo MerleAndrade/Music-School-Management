@@ -10,8 +10,7 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 class TeacherServiceTest {
 
@@ -50,5 +49,21 @@ class TeacherServiceTest {
 
         // then
         Assertions.assertEquals(testTeacher, actual);
+    }
+
+    @Test
+    @DisplayName("DeleteTeacher")
+    void deleteAnimal() {
+        //given
+        Teacher testTeacher = new Teacher("sldkfjlsdkj", "Felipe", "Andrade", "Kontrabass");
+        when(testTeacherRepo.existsById(testTeacher.id())).thenReturn(true);
+
+        //when
+        doNothing().when(testTeacherRepo).deleteById(testTeacher.id());
+        testTeacherRepo.deleteById(testTeacher.id());
+
+        // then
+        verify(testTeacherRepo).deleteById(testTeacher.id());
+
     }
 }
