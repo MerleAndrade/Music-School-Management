@@ -4,7 +4,6 @@ import {NewTeacher, Teacher} from "../teacher/Teacher";
 import AddTeacherFormular from "../teacher/AddTeacherFormular";
 import "./home.css"
 
-
 type HomeProps ={
 
     addTeacher: (newTeacher: NewTeacher) => Promise <Teacher>;
