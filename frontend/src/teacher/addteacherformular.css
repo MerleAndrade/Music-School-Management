@@ -1,7 +1,10 @@
 #saveButton {
     background-color: #E1694E;
-    font-family: Poppins, serif;
+    font-family: "Poppins", sans-serif;
+}
 
+h1 {
+    font:25px "Poppins";
 }
 
 .form-style-1 {
