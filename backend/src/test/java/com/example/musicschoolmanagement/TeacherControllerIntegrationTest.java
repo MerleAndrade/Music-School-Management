@@ -25,7 +25,6 @@ class TeacherControllerIntegrationTest {
                 []
                 """));
     }
-
     @Test
     @DisplayName("AddOneTeacher")
     void addOneTeacher() throws Exception {

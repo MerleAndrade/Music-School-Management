@@ -1,7 +1,16 @@
-.footer-content {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    text-align: center;
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #E1694E;
+}
+
+.footer-text {
+    padding-left:20px;
+    float:left;
+    word-spacing:5px;
+    color: black;
+    font-family:"Poppins", sans-serif;
+    font-size: 12px;
 }

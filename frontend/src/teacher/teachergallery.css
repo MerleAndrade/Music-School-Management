@@ -1,0 +1,22 @@
+body {
+    font: normal medium/1.4 sans-serif;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th[scope="col"] {
+    background-color: #486f73;
+    color: #fff;}
+
+th, td {
+    padding: 0.5rem;
+    text-align: left;
+    border: 1px solid #999;
+}
+
+tbody tr:nth-child(odd) {
+    background: #eee;
+}
