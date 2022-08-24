@@ -13,7 +13,7 @@ export default function TeacherGallery (props: TeacherGalleryProps){
        <div className="allTeacher">
 
            <table>
-               <caption>aktuelle Lehrerliste</caption>
+               <caption>Aktuelle Lehrerliste</caption>
                <thead>
                <tr>
                    <th scope="col">Vorname</th>
