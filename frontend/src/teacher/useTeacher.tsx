@@ -23,5 +23,14 @@ export default function useTeacher(){
             .then((response) => {getAllTeachers()
             return response.data})
     }
-    return{teachers, addTeacher}
+
+    const deleteTeacher = (id: string) => {
+
+        return axios.delete(`/api/teachers/${id}`)
+            .then((response) => response.status)
+            .catch(error => console.error(error))
+            .then(getAllTeachers);
+            }
+
+    return{teachers, addTeacher, deleteTeacher}
 }

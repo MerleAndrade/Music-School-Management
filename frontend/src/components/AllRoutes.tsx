@@ -5,7 +5,7 @@ import Home from "./Home";
 
 export default function AllRoutes () {
 
-    const {teachers, addTeacher} = useTeacher();
+    const {teachers, addTeacher, deleteTeacher} = useTeacher();
 
     return(
         <>
@@ -13,7 +13,9 @@ export default function AllRoutes () {
                 <Route path ={"/"}
                        element={<Home addTeacher={addTeacher}/>}/>
                 <Route path = {"/teachers"}
-                       element = {<TeacherGallery teachers={teachers}/>}/>
+                       element = {<TeacherGallery teachers={teachers}
+                                                  deleteTeacher={deleteTeacher}/>}/>
+
             </Routes>
 
         </>
