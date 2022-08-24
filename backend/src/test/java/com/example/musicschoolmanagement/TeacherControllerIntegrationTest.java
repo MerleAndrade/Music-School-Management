@@ -33,7 +33,6 @@ class TeacherControllerIntegrationTest {
                 []
                 """));
     }
-
     @Test
     @DirtiesContext
     @DisplayName("AddOneTeacher")

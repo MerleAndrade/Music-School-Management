@@ -16,7 +16,6 @@ class TeacherServiceTest {
 
     private final TeacherRepo testTeacherRepo = mock(TeacherRepo.class);
     private final TeacherService testTeacherService = new TeacherService(testTeacherRepo);
-
     private final List<Teacher> testList = List.of(
             new Teacher("123", "Carlotta", "Meier", "Geige"),
             new Teacher("456", "Linus", "Müller", "Schlagzeug"),
@@ -31,7 +30,6 @@ class TeacherServiceTest {
 
         //when
         List<Teacher> actual = testTeacherService.getAllTeachers();
-
         //then
         assertThat(actual).hasSameElementsAs(testList);
     }
@@ -43,10 +41,8 @@ class TeacherServiceTest {
         NewTeacher testNewTeacher = new NewTeacher("Felipe", "Andrade", "Kontrabass");
         Teacher testTeacher = new Teacher("sldkfjlsdkj", "Felipe", "Andrade", "Kontrabass");
         when(testTeacherRepo.save(any(Teacher.class))).thenReturn(testTeacher);
-
         //when
         Teacher actual = testTeacherService.addTeacher(testNewTeacher);
-
         // then
         Assertions.assertEquals(testTeacher, actual);
     }
