@@ -12,7 +12,6 @@ button {
     text-align:center;
     transition: all 0.2s;
     background: #486f73;
-
 }
 button:hover{
     color:#fff;

@@ -9,6 +9,6 @@ export default function Footer() {
             <p>Pfeuferstraße 44 | 81371 München | +49 89 123 456 789</p>
             <p>mail@mukomuenchen.de | www.mukomuenchen.de</p>
             </p>
-    </footer>
+        </footer>
     )
 }
