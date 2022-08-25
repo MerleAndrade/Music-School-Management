@@ -1,17 +1,17 @@
 package com.example.musicschoolmanagement;
 
-import com.example.musicschoolmanagement.model.NewTeacher;
-import com.example.musicschoolmanagement.model.Teacher;
-import com.example.musicschoolmanagement.model.TeacherRepo;
-import com.example.musicschoolmanagement.model.TeacherService;
+import com.example.musicschoolmanagement.teacher.NewTeacher;
+import com.example.musicschoolmanagement.teacher.Teacher;
+import com.example.musicschoolmanagement.teacher.TeacherRepo;
+import com.example.musicschoolmanagement.teacher.TeacherService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
+
 class TeacherServiceTest {
 
     private final TeacherRepo testTeacherRepo = mock(TeacherRepo.class);
@@ -21,11 +21,13 @@ class TeacherServiceTest {
             new Teacher("456", "Linus", "Müller", "Schlagzeug"),
             new Teacher("789", "Josephine", "Huber", "Gesang")
     );
+
     @Test
     @DisplayName("ListOfAllTeacher")
     void getAllTeacher() {
         //given
         when(testTeacherRepo.findAll()).thenReturn(testList);
+
         //when
         List<Teacher> actual = testTeacherService.getAllTeachers();
         //then
@@ -43,5 +45,21 @@ class TeacherServiceTest {
         Teacher actual = testTeacherService.addTeacher(testNewTeacher);
         // then
         Assertions.assertEquals(testTeacher, actual);
+    }
+
+    @Test
+    @DisplayName("DeleteTeacher")
+    void deleteAnimal() {
+        //given
+        Teacher testTeacher = new Teacher("sldkfjlsdkj", "Felipe", "Andrade", "Kontrabass");
+        when(testTeacherRepo.existsById(testTeacher.id())).thenReturn(true);
+
+        //when
+        doNothing().when(testTeacherRepo).deleteById(testTeacher.id());
+        testTeacherRepo.deleteById(testTeacher.id());
+
+        // then
+        verify(testTeacherRepo).deleteById(testTeacher.id());
+
     }
 }
