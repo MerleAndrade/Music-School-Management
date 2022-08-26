@@ -31,5 +31,6 @@ export default function useStudent(){
             .catch(error => console.error(error))
             .then(getAllStudents);
     }
+
     return{students, addStudent, deleteStudent}
 }
