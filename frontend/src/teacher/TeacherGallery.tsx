@@ -3,6 +3,7 @@ import "./teachergallery.css"
 
 type TeacherGalleryProps = {
     teachers : Teacher[]
+    deleteTeacher : (id: string) => Promise<void>
 }
 
 export default function TeacherGallery (props: TeacherGalleryProps){
@@ -12,7 +13,7 @@ export default function TeacherGallery (props: TeacherGalleryProps){
        <div className="allTeacher">
 
            <table>
-               <caption>aktuelle Lehrerliste</caption>
+               <caption>Aktuelle Lehrerliste</caption>
                <thead>
                <tr>
                    <th scope="col">Vorname</th>
@@ -25,6 +26,7 @@ export default function TeacherGallery (props: TeacherGalleryProps){
                    <td>{teacher.firstName}</td>
                    <td>{teacher.lastName}</td>
                    <td>{teacher.instrument}</td>
+                       <button onClick={() => props.deleteTeacher(teacher.id)}>Löschen</button>
                    </tr>
                    )}
            </table>

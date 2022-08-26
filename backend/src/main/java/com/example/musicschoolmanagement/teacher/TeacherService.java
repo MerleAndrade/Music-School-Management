@@ -14,4 +14,12 @@ public class TeacherService {
     public Teacher addTeacher(NewTeacher newTeacher) {
         return teacherRepo.save(newTeacher.withRandomId());
     }
+
+    public boolean deleteTeacher(String id) {
+        if (teacherRepo.existsById(id)) {
+            teacherRepo.deleteById(id);
+            return true;
+        }
+        return false;
+    }
 }

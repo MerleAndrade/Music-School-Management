@@ -1,5 +1,6 @@
 body {
-    font: normal medium/1.4 sans-serif;
+    font-family:"Poppins", sans-serif;
+    font-size: 15px;
 }
 
 table {
@@ -19,4 +20,11 @@ th, td {
 
 tbody tr:nth-child(odd) {
     background: #eee;
+}
+
+caption {
+    caption-side: top;
+    text-align: left;
+    font-family:"Poppins", sans-serif;
+    font-size: 15px;
 }
