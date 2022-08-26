@@ -17,4 +17,12 @@ public class StudentService {
     public Student addStudent(NewStudent newStudent) {
         return studentRepo.save(newStudent.withRandomId());
     }
+
+    public boolean deleteStudent(String id) {
+        if (studentRepo.existsById(id)) {
+            studentRepo.deleteById(id);
+            return true;
+        }
+        return false;
+    }
 }

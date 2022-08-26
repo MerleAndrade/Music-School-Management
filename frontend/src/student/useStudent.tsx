@@ -23,5 +23,13 @@ export default function useStudent(){
             .then((response) => {getAllStudents()
                 return response.data})
     }
-    return{students, addStudent}
+
+    const deleteStudent = (id: string) => {
+
+        return axios.delete(`/api/students/${id}`)
+            .then((response) => response.status)
+            .catch(error => console.error(error))
+            .then(getAllStudents);
+    }
+    return{students, addStudent, deleteStudent}
 }

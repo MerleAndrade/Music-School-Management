@@ -8,7 +8,7 @@ import useStudent from "../student/useStudent";
 export default function AllRoutes () {
 
     const {teachers, addTeacher, deleteTeacher} = useTeacher();
-    const {students, addStudent} = useStudent();
+    const {students, addStudent, deleteStudent} = useStudent();
 
 
 
@@ -21,7 +21,8 @@ export default function AllRoutes () {
                        element = {<TeacherGallery teachers={teachers}
                                                   deleteTeacher={deleteTeacher}/>}/>
                 <Route path = {"/students"}
-                       element = {<StudentGallery students={students}/>}/>
+                       element = {<StudentGallery students={students}
+                                                    deleteStudent = {deleteStudent}/>}/>
             </Routes>
 
         </>

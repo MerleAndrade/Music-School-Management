@@ -3,6 +3,7 @@ import "./studentgallery.css"
 
 type StudentGalleryProps = {
     students : Student[]
+    deleteStudent : (id: string) => Promise<void>
 }
 
 export default function StudentGallery (props: StudentGalleryProps){
@@ -25,6 +26,7 @@ export default function StudentGallery (props: StudentGalleryProps){
                         <td>{student.firstName}</td>
                         <td>{student.lastName}</td>
                         <td>{student.instrument}</td>
+                        <button onClick={() => props.deleteStudent(student.id)}>Löschen</button>
                     </tr>
                 )}
             </table>

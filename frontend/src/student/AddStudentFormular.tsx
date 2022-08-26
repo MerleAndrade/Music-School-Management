@@ -31,7 +31,7 @@ export default function AddStudentFormular(props: AddStudentFormularProps) {
                 });
         }
     }
-    return (
+    return(
         <form onSubmit ={handleSubmit}>
             <h1>Neuen Schüler hinzufügen</h1>
             <ul className="form-style-2">

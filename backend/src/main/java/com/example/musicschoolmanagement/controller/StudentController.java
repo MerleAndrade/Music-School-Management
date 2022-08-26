@@ -4,6 +4,7 @@ import com.example.musicschoolmanagement.student.NewStudent;
 import com.example.musicschoolmanagement.student.Student;
 import com.example.musicschoolmanagement.student.StudentService;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -31,4 +32,9 @@ public class StudentController {
         return studentService.addStudent(student);
     }
 
+    @DeleteMapping("{id}")
+    public ResponseEntity<Void> deleteStudent(@PathVariable String id) {
+        boolean deleteSuccess = studentService.deleteStudent(id);
+        return new ResponseEntity<>(deleteSuccess ? HttpStatus.NO_CONTENT : HttpStatus.NOT_FOUND);
+    }
 }
