@@ -8,8 +8,8 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.verify;
 
 class StudentServiceTest {
 
@@ -43,5 +43,21 @@ class StudentServiceTest {
         Student actual = testStudentService.addStudent(testNewStudent);
         // then
         Assertions.assertEquals(testStudent, actual);
+    }
+
+    @Test
+    @DisplayName("DeleteStudent")
+    void deleteStudent() {
+        //given
+        Student testStudent = new Student("sldkfjlsdkj", "Felipe", "Andrade", "Kontrabass");
+        when(testStudentRepo.existsById(testStudent.id())).thenReturn(true);
+
+        //when
+        doNothing().when(testStudentRepo).deleteById(testStudent.id());
+        testStudentRepo.deleteById(testStudent.id());
+
+        // then
+        verify(testStudentRepo).deleteById(testStudent.id());
+
     }
 }

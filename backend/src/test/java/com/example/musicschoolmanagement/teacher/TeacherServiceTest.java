@@ -48,7 +48,7 @@ class TeacherServiceTest {
 
     @Test
     @DisplayName("DeleteTeacher")
-    void deleteAnimal() {
+    void deleteTeacher() {
         //given
         Teacher testTeacher = new Teacher("sldkfjlsdkj", "Felipe", "Andrade", "Kontrabass");
         when(testTeacherRepo.existsById(testTeacher.id())).thenReturn(true);
