@@ -22,15 +22,17 @@ class StudentControllerIntegrationTest {
     ObjectMapper objectMapper;
 
     @Test
+    @DirtiesContext
     @DisplayName("getAllStudents")
     void getAllStudents() throws Exception {
         mockMvc.perform(get("/api/students"))
                 .andExpect(status().isOk())
-                .andExpect(content().json( """
+                .andExpect(content().json("""
                 []
                 """));
     }
     @Test
+    @DirtiesContext
     @DisplayName("AddOneStudent")
     void addOneStudent() throws Exception {
         mockMvc.perform(post("/api/students")
