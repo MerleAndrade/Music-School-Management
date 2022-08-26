@@ -1,5 +1,4 @@
-package com.example.musicschoolmanagement;
-import com.example.musicschoolmanagement.teacher.Teacher;
+package com.example.musicschoolmanagement.teacher;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +27,7 @@ class TeacherControllerIntegrationTest {
     void getAllTeachers() throws Exception {
         mockMvc.perform(get("/api/teachers"))
                 .andExpect(status().isOk())
-                .andExpect(content().json("""
+                .andExpect(content().json( """
                 []
                 """));
     }

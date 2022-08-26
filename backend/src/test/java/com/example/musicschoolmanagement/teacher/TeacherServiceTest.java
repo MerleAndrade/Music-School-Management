@@ -1,4 +1,4 @@
-package com.example.musicschoolmanagement;
+package com.example.musicschoolmanagement.teacher;
 
 import com.example.musicschoolmanagement.teacher.NewTeacher;
 import com.example.musicschoolmanagement.teacher.Teacher;
@@ -27,7 +27,6 @@ class TeacherServiceTest {
     void getAllTeacher() {
         //given
         when(testTeacherRepo.findAll()).thenReturn(testList);
-
         //when
         List<Teacher> actual = testTeacherService.getAllTeachers();
         //then
@@ -49,7 +48,7 @@ class TeacherServiceTest {
 
     @Test
     @DisplayName("DeleteTeacher")
-    void deleteAnimal() {
+    void deleteTeacher() {
         //given
         Teacher testTeacher = new Teacher("sldkfjlsdkj", "Felipe", "Andrade", "Kontrabass");
         when(testTeacherRepo.existsById(testTeacher.id())).thenReturn(true);
