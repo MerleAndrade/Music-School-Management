@@ -23,9 +23,9 @@ export default function StudentGallery (props: StudentGalleryProps){
                 </thead>
                 {props.students.map(student =>
                     <tr key={student.id}>
-                        <td>{student.firstName}</td>
-                        <td>{student.lastName}</td>
-                        <td>{student.instrument}</td>
+                        <td>{student.firstNameStudent}</td>
+                        <td>{student.lastNameStudent}</td>
+                        <td>{student.instrumentStudent}</td>
                         <button onClick={() => props.deleteStudent(student.id)}>Löschen</button>
                     </tr>
                 )}

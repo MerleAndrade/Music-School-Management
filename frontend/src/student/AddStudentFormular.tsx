@@ -9,25 +9,25 @@ type AddStudentFormularProps = {
 
 export default function AddStudentFormular(props: AddStudentFormularProps) {
 
-    const[firstName, setFirstName] = useState<string> ("");
-    const[lastName, setLastName] = useState<string> ("");
-    const[instrument, setInstrument] = useState<string> ("");
-    const [errorMessage, setErrorMessage] = useState("");
+    const[firstNameStudent, setFirstNameStudent] = useState<string> ("");
+    const[lastNameStudent, setLastNameStudent] = useState<string> ("");
+    const[instrumentStudent, setInstrumentStudent] = useState<string> ("");
+    const [errorMessageStudent, setErrorMessageStudent] = useState("");
 
     const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        if(!firstName || !lastName || !instrument) {
+        if(!firstNameStudent || !lastNameStudent || !instrumentStudent) {
             toast.error("Alle Felder müssen bitte ausgefüllt werden!")
         } else {
-            props.addStudent({firstName, lastName, instrument})
+            props.addStudent({firstNameStudent, lastNameStudent, instrumentStudent})
                 .then(() => {
-                    setFirstName("");
-                    setLastName("");
-                    setInstrument("");
-                    setErrorMessage("");
+                    setFirstNameStudent("");
+                    setLastNameStudent("");
+                    setInstrumentStudent("");
+                    setErrorMessageStudent("");
                 })
                 .catch((error) => {
-                    setErrorMessage(error.response.data.message)
+                    setErrorMessageStudent(error.response.data.message)
                 });
         }
     }
@@ -35,16 +35,16 @@ export default function AddStudentFormular(props: AddStudentFormularProps) {
         <form onSubmit ={handleSubmit}>
             <h1>Neuen Schüler hinzufügen</h1>
             <ul className="form-style-2">
-                <li> <label htmlFor="firstName"> Vorname: <span className="required">*</span>
-                    <input className="field-long" type={"text"}  name={"firstName"} onChange={(event: ChangeEvent<HTMLInputElement>) => setFirstName(event.target.value)} value={firstName}/>
+                <li> <label htmlFor="firstNameStudent"> Vorname: <span className="required">*</span>
+                    <input className="field-long" type={"text"}  name={"firstNameStudent"} onChange={(event: ChangeEvent<HTMLInputElement>) => setFirstNameStudent(event.target.value)} value={firstNameStudent}/>
                 </label>
                 </li>
-                <li> <label htmlFor="lastName"> Nachname: <span className="required">*</span>
-                    <input className="field-long" type={"text"}  name={"lastName"} onChange={(event: ChangeEvent<HTMLInputElement>) => setLastName(event.target.value)} value={lastName}/>
+                <li> <label htmlFor="lastNameStudent"> Nachname: <span className="required">*</span>
+                    <input className="field-long" type={"text"}  name={"lastNameStudent"} onChange={(event: ChangeEvent<HTMLInputElement>) => setLastNameStudent(event.target.value)} value={lastNameStudent}/>
                 </label>
                 </li>
-                <li> <label htmlFor="instrument"> Instrument: <span className="required">*</span>
-                    <input className="field-long" type={"text"}  name={"instrument"} onChange={(event: ChangeEvent<HTMLInputElement>) => setInstrument(event.target.value)} value={instrument}/>
+                <li> <label htmlFor="instrumentStudent"> Instrument: <span className="required">*</span>
+                    <input className="field-long" type={"text"}  name={"instrumentStudent"} onChange={(event: ChangeEvent<HTMLInputElement>) => setInstrumentStudent(event.target.value)} value={instrumentStudent}/>
                 </label>
                 </li>
                 <li>
