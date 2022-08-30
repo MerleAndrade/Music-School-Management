@@ -7,8 +7,9 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
-import java.util.Optional;
+import java.util.Set;
 
 
 @RestController
@@ -36,9 +37,8 @@ public class TeacherController {
         return new ResponseEntity<>(deleteSuccess ? HttpStatus.NO_CONTENT : HttpStatus.NOT_FOUND);
     }
 
-    @GetMapping("{instrument}")
-    public Optional<Teacher> findByInstrument(@RequestParam(name = "instrument", required = false) @PathVariable String instrument) {
-        return teacherService.findByInstrument(instrument);
+    @GetMapping("/instruments")
+    public Set<String> getAllInstruments() {
+        return teacherService.getAllInstruments();
     }
-
 }

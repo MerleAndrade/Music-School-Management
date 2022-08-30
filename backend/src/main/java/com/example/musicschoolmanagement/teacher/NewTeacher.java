@@ -10,3 +10,5 @@ public record NewTeacher(String firstName,
         return new Teacher(UUID.randomUUID().toString(), firstName(), lastName(), instrument());
     }
 }
+
+
