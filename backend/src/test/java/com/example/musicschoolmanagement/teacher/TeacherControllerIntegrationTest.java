@@ -101,6 +101,7 @@ class TeacherControllerIntegrationTest {
 
         Teacher saveResultTeacher = objectMapper.readValue(saveResult, Teacher.class);
         String id = saveResultTeacher.id();
+
         mockMvc.perform(get("/api/teachers/instruments"))
                 .andExpect(status().isOk())
                 .andExpect(content().json("""
