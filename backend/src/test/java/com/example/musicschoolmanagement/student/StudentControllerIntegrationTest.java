@@ -38,15 +38,15 @@ class StudentControllerIntegrationTest {
         mockMvc.perform(post("/api/students")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("""
-                        {"firstName": "Felipe",
-                        "lastName": "Andrade",
-                        "instrument": "Kontrabass"}
+                        {"firstNameStudent": "Felipe",
+                        "lastNameStudent": "Andrade",
+                        "instrumentStudent": "Kontrabass"}
                         """))
                 .andExpect(status().isCreated())
                 .andExpect(content().json("""
-                {"firstName": "Felipe",
-                        "lastName": "Andrade",
-                        "instrument": "Kontrabass"}
+                {"firstNameStudent": "Felipe",
+                        "lastNameStudent": "Andrade",
+                        "instrumentStudent": "Kontrabass"}
                 """));
     }
 
@@ -57,9 +57,9 @@ class StudentControllerIntegrationTest {
         String saveResult =  mockMvc.perform(post("/api/students")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("""
-                        {"firstName": "Felipe",
-                        "lastName": "Andrade",
-                        "instrument": "Kontrabass"}
+                        {"firstNameStudent": "Felipe",
+                        "lastNameStudent": "Andrade",
+                        "instrumentStudent": "Kontrabass"}
                         """))
                 .andReturn()
                 .getResponse()

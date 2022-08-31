@@ -7,7 +7,12 @@ import com.example.musicschoolmanagement.teacher.TeacherService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
@@ -19,7 +24,7 @@ class TeacherServiceTest {
     private final List<Teacher> testList = List.of(
             new Teacher("123", "Carlotta", "Meier", "Geige"),
             new Teacher("456", "Linus", "Müller", "Schlagzeug"),
-            new Teacher("789", "Josephine", "Huber", "Gesang")
+            new Teacher("789", "Josephine", "Huber", "Schlagzeug")
     );
 
     @Test
@@ -61,4 +66,15 @@ class TeacherServiceTest {
         verify(testTeacherRepo).deleteById(testTeacher.id());
 
     }
-}
+    @Test
+    @DisplayName("GetAllInstruments")
+    void getAllInstruments() {
+        //given
+        when(testTeacherRepo.findAll()).thenReturn(testList);
+        //when
+        Set<String> expected = new HashSet<>(List.of("Geige", "Schlagzeug"));
+        Set<String> actual = testTeacherService.getAllInstruments();
+        //then
+        Assertions.assertEquals(expected, actual);
+    }
+    }
