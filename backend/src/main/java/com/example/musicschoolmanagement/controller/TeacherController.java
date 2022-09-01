@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Set;
 
-
 @RestController
 @RequestMapping("/api/teachers")
 @AllArgsConstructor
@@ -41,4 +40,5 @@ public class TeacherController {
     public Set<String> getAllInstruments() {
         return teacherService.getAllInstruments();
     }
-}
+
+    }
