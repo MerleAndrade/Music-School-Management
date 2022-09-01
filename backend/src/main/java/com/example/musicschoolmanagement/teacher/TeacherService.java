@@ -36,6 +36,4 @@ public class TeacherService {
                 .map(Teacher::instrument)
                 .collect(Collectors.toSet());
         }
-
 }
-

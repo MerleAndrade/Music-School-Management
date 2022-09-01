@@ -13,11 +13,6 @@ export default function useInstrument(){
             .then((response) => response.data)
             .then((data) => setInstruments(data))
     }
-    const addInstrument = () => {
-            return axios.post("/api/teachers/instruments")
-                .then(getAllInstruments)
-        }
 
-
-    return{instruments, addInstrument}
+    return{instruments}
 }

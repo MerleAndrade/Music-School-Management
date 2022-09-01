@@ -1,3 +1,3 @@
 export type Instrument ={
-    name: string
+    name: string,
 }

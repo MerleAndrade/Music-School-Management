@@ -10,7 +10,7 @@ export default function AllRoutes () {
 
     const {teachers, addTeacher, deleteTeacher} = useTeacher();
     const {students, addStudent, deleteStudent} = useStudent();
-    const {instruments, addInstrument} = useCourse();
+    const {instruments} = useCourse();
 
 
 
@@ -18,7 +18,7 @@ export default function AllRoutes () {
         <>
             <Routes>
                 <Route path ={"/"}
-                       element={<Home addTeacher={addTeacher} addStudent={addStudent} instruments={instruments} addInstrument={addInstrument}/>}/>
+                       element={<Home addTeacher={addTeacher} addStudent={addStudent} instruments={instruments}/>}/>
                 <Route path = {"/teachers"}
                        element = {<TeacherGallery teachers={teachers}
                                                   deleteTeacher={deleteTeacher}/>}/>
