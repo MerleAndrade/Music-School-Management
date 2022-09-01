@@ -1,8 +1,6 @@
 package com.example.musicschoolmanagement.controller;
 
-import com.example.musicschoolmanagement.teacher.NewTeacher;
-import com.example.musicschoolmanagement.teacher.Teacher;
-import com.example.musicschoolmanagement.teacher.TeacherService;
+import com.example.musicschoolmanagement.teacher.*;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -41,4 +39,11 @@ public class TeacherController {
     public Set<String> getAllInstruments() {
         return teacherService.getAllInstruments();
     }
+
+    @PostMapping("/instruments")
+    @ResponseStatus(code = HttpStatus.CREATED)
+    public Course addCourse(@RequestBody NewCourse course) {
+        return teacherService.addCourse(course);
+    }
+
 }
