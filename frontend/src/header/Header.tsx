@@ -11,6 +11,7 @@ export default function Header() {
         <nav className="header-content">
                     <NavLink className={"nav"} onClick={() => setTab("Home")} to={'/'}>
                         <img src={companyLogo} className="header-logo" alt="Muko-Logo"/>
+                        <div> {tab}</div>
                     </NavLink>
 
         </nav>
