@@ -22,7 +22,7 @@ export default function InstrumentList (props: InstrumentListProps) {
 
     return (
         <form onSubmit={handleSubmit} >
-
+            <h1>Neuen Kurs erstellen</h1>
             <select value={instrument} onChange={(event) => handleChange(event)}>
                 {props.instruments.map(instruments => (
                     <option className="option" value={instruments}>{instruments}</option>))}

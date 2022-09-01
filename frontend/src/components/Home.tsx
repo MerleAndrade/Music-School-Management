@@ -29,6 +29,10 @@ export default function Home (props: HomeProps) {
             <NavLink className={"nav"} onClick={() => setTab("Student")} to={'/students'}>
                 <button className="button">Schülerliste</button>
             </NavLink>
+            <NavLink className={"nav"} onClick={() => setTab("Instrument")} to={'/instrument'}>
+                <button className="button">Kursliste</button>
+            </NavLink>
+
 
             <AddTeacherFormular addTeacher={props.addTeacher}/>
             <AddStudentFormular addStudent={props.addStudent}/>

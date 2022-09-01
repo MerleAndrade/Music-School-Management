@@ -5,6 +5,7 @@ import Home from "./Home";
 import StudentGallery from "../student/StudentGallery";
 import useStudent from "../student/useStudent";
 import useCourse from "../course/useCourse";
+import CourseGallery from "../course/CourseGallery";
 
 export default function AllRoutes () {
 
@@ -25,6 +26,8 @@ export default function AllRoutes () {
                 <Route path = {"/students"}
                        element = {<StudentGallery students={students}
                                                     deleteStudent = {deleteStudent}/>}/>
+                <Route path = {"/instrument"}
+                       element = {<CourseGallery instruments={instruments}/>}/>
             </Routes>
 
         </>
