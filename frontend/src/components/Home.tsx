@@ -33,7 +33,6 @@ export default function Home (props: HomeProps) {
                 <button className="button">Kursliste</button>
             </NavLink>
 
-
             <AddTeacherFormular addTeacher={props.addTeacher}/>
             <AddStudentFormular addStudent={props.addStudent}/>
             <InstrumentList instruments={props.instruments}/>

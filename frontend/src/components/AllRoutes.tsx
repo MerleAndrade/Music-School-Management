@@ -13,8 +13,6 @@ export default function AllRoutes () {
     const {students, addStudent, deleteStudent} = useStudent();
     const {instruments} = useCourse();
 
-
-
     return(
         <>
             <Routes>
@@ -29,7 +27,6 @@ export default function AllRoutes () {
                 <Route path = {"/instrument"}
                        element = {<CourseGallery instruments={instruments}/>}/>
             </Routes>
-
         </>
     )
 }
