@@ -37,8 +37,5 @@ public class TeacherService {
                 .collect(Collectors.toSet());
         }
 
-    public Course addCourse(NewCourse newCourse) {
-        return teacherRepo.save(newCourse.withRandomId());
-    }
 }
 

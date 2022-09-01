@@ -1,4 +1,4 @@
-package com.example.musicschoolmanagement.teacher;
+package com.example.musicschoolmanagement.course;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
