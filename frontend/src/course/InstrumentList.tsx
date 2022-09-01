@@ -1,15 +1,15 @@
 import {ChangeEvent, FormEvent, useEffect, useState} from "react";
+import * as React from "react";
 
 type InstrumentListProps = {
     instruments: string[]
-
 }
 
 export default function InstrumentList (props: InstrumentListProps) {
 
-    const [instrument, setInstrument] = useState<string>("");
+    const [instrument, setInstrument] = useState("");
 
-    const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const handleChange = (event: ChangeEvent<HTMLSelectElement>) => {
         setInstrument(event.target.value);
     }
     useEffect(() => {
@@ -23,11 +23,10 @@ export default function InstrumentList (props: InstrumentListProps) {
     return (
         <form onSubmit={handleSubmit} >
 
-            <select value={instrument} onChange={() => handleChange}>
+            <select value={instrument} onChange={(event) => handleChange(event)}>
                 {props.instruments.map(instruments => (
                     <option className="option" value={instruments}>{instruments}</option>))}
             </select>
-
             <button type={"submit"}>Submit</button>
         </form>
     )
