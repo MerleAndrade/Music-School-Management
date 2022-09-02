@@ -29,7 +29,6 @@ public class TeacherService {
         return false;
     }
 
-
     public Set<String> getAllInstruments() {
         List<Teacher> teachers = getAllTeachers();
         return teachers.stream()

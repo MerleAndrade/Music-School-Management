@@ -1,12 +1,11 @@
 package com.example.musicschoolmanagement.controller;
 
-import com.example.musicschoolmanagement.course.Course;
-import com.example.musicschoolmanagement.course.CourseService;
 import com.example.musicschoolmanagement.teacher.*;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 import java.util.Set;
 
@@ -17,7 +16,6 @@ import java.util.Set;
 public class TeacherController {
 
     private final TeacherService teacherService;
-    private final CourseService courseService;
 
     @GetMapping
     public List<Teacher> getAllTeachers() {
@@ -41,10 +39,5 @@ public class TeacherController {
         return teacherService.getAllInstruments();
     }
 
-    @PostMapping("/instrument")
-    @ResponseStatus(code = HttpStatus.CREATED)
-    public List<Course> addInstrument(@PathVariable String instrument, @RequestBody List<Course> instruments) {
-        return courseService.addInstrument(instrument);
-    }
 
 }
