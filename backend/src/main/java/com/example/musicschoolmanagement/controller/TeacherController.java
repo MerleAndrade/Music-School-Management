@@ -33,7 +33,7 @@ public class TeacherController {
         boolean deleteSuccess = teacherService.deleteTeacher(id);
         return new ResponseEntity<>(deleteSuccess ? HttpStatus.NO_CONTENT : HttpStatus.NOT_FOUND);
     }
-    @GetMapping("/instrument")
+    @GetMapping("/instruments")
     public Set<String> getAllInstruments()
     {
         return teacherService.getAllInstruments();
