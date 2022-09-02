@@ -1,6 +1,8 @@
 package com.example.musicschoolmanagement.controller;
 
-import com.example.musicschoolmanagement.teacher.*;
+import com.example.musicschoolmanagement.teacher.NewTeacher;
+import com.example.musicschoolmanagement.teacher.Teacher;
+import com.example.musicschoolmanagement.teacher.TeacherService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
