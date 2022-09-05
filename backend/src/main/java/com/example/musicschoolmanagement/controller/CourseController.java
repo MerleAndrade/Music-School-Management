@@ -2,6 +2,7 @@ package com.example.musicschoolmanagement.controller;
 
 import com.example.musicschoolmanagement.course.Course;
 import com.example.musicschoolmanagement.course.CourseService;
+import com.example.musicschoolmanagement.course.NewCourse;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -23,7 +24,7 @@ public class CourseController {
 
     @PostMapping
     @ResponseStatus(code = HttpStatus.CREATED)
-    public Course addCourse(@RequestBody Course course) {
+    public Course addCourse(@RequestBody NewCourse course) {
         return courseService.addCourse(course);
     }
 }

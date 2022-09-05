@@ -12,7 +12,7 @@ public class CourseService {
         return courseRepo.findAll();
     }
 
-    public Course addCourse(Course course) {
-        return courseRepo.save(course);
+    public Course addCourse(NewCourse newCourse) {
+        return courseRepo.save(newCourse.withRandomId());
     }
 }
