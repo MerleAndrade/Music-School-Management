@@ -1,9 +1,9 @@
-import {ChangeEvent, FormEvent, useEffect, useState} from "react";
+import {FormEvent, useState} from "react";
 import * as React from "react";
 import {Course, NewCourse} from "./Course";
-import {toast} from "react-toastify";
 import "./instrumentList.css"
-import {Select} from "@mui/material";
+import {FormControl, InputLabel, Select, SelectChangeEvent} from "@mui/material";
+import {toast} from "react-toastify";
 
 type InstrumentListProps = {
     instruments: string[]
@@ -12,42 +12,45 @@ type InstrumentListProps = {
 
 export default function InstrumentList (props: InstrumentListProps) {
 
-    const [instrument, setInstrument] = useState("");
-    const [errorMessage, setErrorMessage] = useState("");
+    const [finalInstruments, setFinalInstruments] = useState<string>("")
 
-    const handleChange = (event: ChangeEvent<HTMLSelectElement>) => {
-        setInstrument(event.target.value);
-    }
-    useEffect(() => {
-            setInstrument(props.instruments[0]);
-        }
-    , [props.instruments])
 
-    const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+
+    const onInstrumentSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        if (!instrument) {
-            toast.error("Alle Felder müssen bitte ausgefüllt werden!")
-        } else {
-            props.addCourse({instrument})
-                .then(() => {
-                    setErrorMessage("");
-                })
-                .catch((error) => {
-                    setErrorMessage(error.response.data.message)
-                });
-        }
+        const newCourse: NewCourse = {
+            instrument: finalInstruments,
+        };
+        props.addCourse(newCourse)
+            .then(() => setFinalInstruments(""))
+            .catch(() => {
+                    toast.error("Ihre Eingabe konnte nicht gespeichert werden! Bitte füllen Sie alle Felder korrekt aus!")
+                }
+            )
+
     }
 
-    return (
-        <form onSubmit={handleSubmit} >
-            <h1>Neuen Kurs erstellen</h1>
-            <ul className="form-style-3">
-            <li><Select options={props.instruments.map(instruments => (
-                <option className="option" value=
-                    {instruments}>{instruments} onChange={(event: ChangeEvent<HTMLSelectElement>) => handleChange(event)}
-                </option>))} />
-                </li>
-            </ul>
-        </form>
-    )
+
+    const handleSelectInstrumentChange = (event: SelectChangeEvent) => {
+        setFinalInstruments(event.target.value)
+
+        return (
+            <form onSubmit={onInstrumentSubmit}>
+                <h1>Neuen Kurs erstellen</h1>
+                <FormControl className="form-style-3">
+                    <InputLabel>Instrumente</InputLabel>
+                    <Select
+                        value={finalInstruments}
+                        onChange={handleSelectInstrumentChange}>
+                        return (
+                        <>
+                        {props.instruments.map(instruments => (
+                            <option className="option" value={instruments}>{instruments}</option>))}
+                        )</>
+                    </Select>
+                    <button type={"submit"}>Submit</button>
+                </FormControl>
+            </form>
+        )
     }
+}
