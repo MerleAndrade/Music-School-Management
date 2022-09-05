@@ -1,53 +1,64 @@
-import {FormEvent, useState} from "react";
+import {ChangeEvent, FormEvent, useEffect, useState} from "react";
 import * as React from "react";
-import {Course, NewCourse} from "./Course";
 import "./instrumentList.css"
-import {FormControl, InputLabel, Select, SelectChangeEvent} from "@mui/material";
 import {toast} from "react-toastify";
 
 type InstrumentListProps = {
     instruments: string[]
-    addCourse: (newCourse: NewCourse) => Promise<Course>;
+    addCourse: (instrument: string) => Promise<void>;
 }
 
 export default function InstrumentList (props: InstrumentListProps) {
 
-    const [finalInstruments, setFinalInstruments] = useState<string>("")
+    const [instrumentNameToAdd, setInstrumentNameToAdd] = useState<string>("");
 
 
 
     const onInstrumentSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        const newCourse: NewCourse = {
-            instrument: finalInstruments,
-        };
-        props.addCourse(newCourse)
-            .then(() => setFinalInstruments(""))
-            .catch(() => {
-                    toast.error("Ihre Eingabe konnte nicht gespeichert werden! Bitte füllen Sie alle Felder korrekt aus!")
-                }
-            )
-
+        props.addCourse(instrumentNameToAdd)
+                .then(() => setInstrumentNameToAdd(""))
+                .catch((error) => {
+                    notify("Hi sorry!!! " + error.message)
+                });
+    }
+    const handleChange = (event: ChangeEvent<HTMLSelectElement>) => {
+        setInstrumentNameToAdd(event.target.value);
     }
 
+    useEffect(() => {
+        if (props.instruments && props.instruments.length > 0) {
+            setInstrumentNameToAdd(props.instruments[0]);
+        }
+    }, [props.addCourse, props.instruments])
 
-    const handleSelectInstrumentChange = (event: SelectChangeEvent) => {
-        setFinalInstruments(event.target.value)
+    const notify = (message: string) => {
+        toast.error(message, {
+            position: toast.POSITION.TOP_LEFT
+        });
+    };
 
         return (
+            <div>
             <form onSubmit={onInstrumentSubmit}>
                 <h1>Neuen Kurs erstellen</h1>
-                <FormControl className="form-style-3">
-                    <InputLabel>Instrumente</InputLabel>
-                    <Select
-                        value={finalInstruments}
-                        onChange={handleSelectInstrumentChange}>
-                        {props.instruments.map(instruments =>
-                            <option className="option" value={instruments}>{instruments}</option>)}
-                    </Select>
+                <ul className={"form-style-3"}>
+                    <li>
+                    <label id={"instrument"} >Instrumente: <span className="required">*</span>
+                    <select
+                        value={instrumentNameToAdd}
+                        onChange={
+                            handleChange}>
+                        {props.instruments.map(instruments =>(
+                            <option className={"option"} value={instruments}>{instruments}</option>))}
+                    </select>
+                    </label>
+                    </li>
+                    <li>
                     <button type={"submit"}>Submit</button>
-                </FormControl>
+                    </li>
+                </ul>
             </form>
+            </div>
         )
-    }
 }

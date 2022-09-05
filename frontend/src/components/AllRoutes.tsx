@@ -24,7 +24,7 @@ export default function AllRoutes () {
                 <Route path = {"/students"}
                        element = {<StudentGallery students={students}
                                                     deleteStudent = {deleteStudent}/>}/>
-                <Route path = {"/instrument"}
+                <Route path = {"/courses"}
                        element = {<CourseGallery instruments={instruments}/>}/>
             </Routes>
         </>

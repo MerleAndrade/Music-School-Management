@@ -6,13 +6,12 @@ import "./home.css"
 import {NewStudent, Student} from "../student/Student";
 import AddStudentFormular from "../student/AddStudentFormular";
 import InstrumentList from "../course/InstrumentList";
-import {Course, NewCourse} from "../course/Course";
 
 type HomeProps ={
 
     addTeacher: (newTeacher: NewTeacher) => Promise <Teacher>;
     addStudent: (newStudent: NewStudent) => Promise <Student>;
-    addCourse: (newCourse: NewCourse) => Promise <Course>;
+    addCourse: (instrument: string) => Promise<void>
     instruments: string[];
 }
 export default function Home (props: HomeProps) {
@@ -31,7 +30,7 @@ export default function Home (props: HomeProps) {
             <NavLink className={"nav"} onClick={() => setTab("Student")} to={'/students'}>
                 <button className="button">Schülerliste</button>
             </NavLink>
-            <NavLink className={"nav"} onClick={() => setTab("Instrument")} to={'/instrument'}>
+            <NavLink className={"nav"} onClick={() => setTab("Instrument")} to={'/courses'}>
                 <button className="button">Kursliste</button>
             </NavLink>
 
