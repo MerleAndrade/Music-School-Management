@@ -6,12 +6,14 @@ import "./home.css"
 import {NewStudent, Student} from "../student/Student";
 import AddStudentFormular from "../student/AddStudentFormular";
 import InstrumentList from "../course/InstrumentList";
+import {Course, NewCourse} from "../course/Course";
 
 type HomeProps ={
 
     addTeacher: (newTeacher: NewTeacher) => Promise <Teacher>;
     addStudent: (newStudent: NewStudent) => Promise <Student>;
     instruments: string[];
+    addCourse: (newCourse: NewCourse) => Promise<Course>;
 }
 export default function Home (props: HomeProps) {
 
@@ -35,7 +37,7 @@ export default function Home (props: HomeProps) {
 
             <AddTeacherFormular addTeacher={props.addTeacher}/>
             <AddStudentFormular addStudent={props.addStudent}/>
-            <InstrumentList instruments={props.instruments}/>
+            <InstrumentList instruments={props.instruments} addCourse={props.addCourse}/>
         </nav>
     )
 }

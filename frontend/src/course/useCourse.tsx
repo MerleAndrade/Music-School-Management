@@ -1,5 +1,7 @@
 import {useEffect, useState} from "react";
 import axios from "axios";
+import {NewCourse} from "./Course";
+
 
 export default function useInstrument(){
 
@@ -14,5 +16,14 @@ export default function useInstrument(){
             .then((data) => setInstruments(data))
     }
 
-    return{instruments}
+    const addCourse = (newCourse: NewCourse) => {
+
+        return axios.post("/api/courses", newCourse)
+            .then((response) => {getAllInstruments()
+                return response.data})
+    }
+
+
+
+    return{instruments, addCourse}
 }
