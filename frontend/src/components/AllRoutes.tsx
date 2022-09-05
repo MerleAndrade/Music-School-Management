@@ -17,7 +17,7 @@ export default function AllRoutes () {
         <>
             <Routes>
                 <Route path ={"/"}
-                       element={<Home addTeacher={addTeacher} addStudent={addStudent} instruments={instruments} addCourse={addCourse}/>}/>
+                       element={<Home addTeacher={addTeacher} addStudent={addStudent} addCourse={addCourse} instruments={instruments}/>}/>
                 <Route path = {"/teachers"}
                        element = {<TeacherGallery teachers={teachers}
                                                   deleteTeacher={deleteTeacher}/>}/>
@@ -25,7 +25,8 @@ export default function AllRoutes () {
                        element = {<StudentGallery students={students}
                                                     deleteStudent = {deleteStudent}/>}/>
                 <Route path = {"/courses"}
-                       element = {<CourseGallery instruments={instruments}/>}/>
+                       element = {<CourseGallery addCourse={addCourse}
+                                                 instruments={instruments}/>}/>
             </Routes>
         </>
     )

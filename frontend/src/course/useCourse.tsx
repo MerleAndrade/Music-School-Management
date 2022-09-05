@@ -2,10 +2,10 @@ import {useEffect, useState} from "react";
 import axios from "axios";
 import {NewCourse} from "./Course";
 
-
-export default function useInstrument(){
+export default function useCourse(){
 
     const [instruments, setInstruments] = useState<string[]>([]);
+
 
 
     useEffect(() => {getAllInstruments()}, [])
@@ -16,8 +16,8 @@ export default function useInstrument(){
             .then((data) => setInstruments(data))
     }
 
-    const addCourse = (instrument: string) => {
-        const newCourse: NewCourse = {"instrument": instrument};
+    const addCourse = (instrumentName: string) => {
+        const newCourse: NewCourse = {name: instrumentName};
         return axios.post("/api/courses", newCourse)
             .then(getAllInstruments)
     }
