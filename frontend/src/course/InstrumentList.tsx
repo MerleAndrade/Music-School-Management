@@ -42,11 +42,8 @@ export default function InstrumentList (props: InstrumentListProps) {
                     <Select
                         value={finalInstruments}
                         onChange={handleSelectInstrumentChange}>
-                        return (
-                        <>
-                        {props.instruments.map(instruments => (
-                            <option className="option" value={instruments}>{instruments}</option>))}
-                        )</>
+                        {props.instruments.map(instruments =>
+                            <option className="option" value={instruments}>{instruments}</option>)}
                     </Select>
                     <button type={"submit"}>Submit</button>
                 </FormControl>
