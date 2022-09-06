@@ -52,6 +52,20 @@ class TeacherServiceTest {
     }
 
     @Test
+    void editTeacher() {
+        Teacher testTeacher = new Teacher("sldkfjlsdkj", "Felipe", "Andrade", "Kontrabass");
+
+        when(testTeacherRepo.existsById(testTeacher.id())).thenReturn(true);
+
+        when(testTeacherRepo.save(any(Teacher.class)))
+                .thenReturn(testTeacher);
+
+        Teacher actualResult = testTeacherService.editTeacher(testTeacher);
+
+        assertThat(actualResult).isEqualTo(testTeacher);
+    }
+
+    @Test
     @DisplayName("DeleteTeacher")
     void deleteTeacher() {
         //given
