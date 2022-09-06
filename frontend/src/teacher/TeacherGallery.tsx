@@ -1,35 +1,33 @@
 import {Teacher} from "./Teacher";
 import "./teachergallery.css"
+import SingleTeacher from "./SingleTeacher";
+import React from "react";
 
 type TeacherGalleryProps = {
-    teachers : Teacher[]
-    deleteTeacher : (id: string) => Promise<void>
+    teachers: Teacher [],
 }
 
-export default function TeacherGallery (props: TeacherGalleryProps){
+export default function TeacherGallery(props: TeacherGalleryProps) {
 
 
-    return(
-       <div className="allTeacher">
-
-           <table>
-               <caption>Aktuelle Lehrerliste</caption>
-               <thead>
-               <tr>
-                   <th scope="col">Vorname</th>
-                   <th scope="col">Nachname</th>
-                   <th scope="col">Instrument</th>
-               </tr>
-               </thead>
-               {props.teachers.map(teacher =>
-                   <tr key={teacher.id}>
-                   <td>{teacher.firstName}</td>
-                   <td>{teacher.lastName}</td>
-                   <td>{teacher.instrument}</td>
-                       <button onClick={() => props.deleteTeacher(teacher.id)}>Löschen</button>
-                   </tr>
-                   )}
-           </table>
-       </div>
+    return (
+        <span>
+            <h2>Aktuelle Lehrerliste</h2>
+            <table>
+                <tbody>
+                <tr>
+                    <th>Vorname</th>
+                    <th>Nachname</th>
+                    <th>Instrument</th>
+                </tr>
+                {props.teachers.map((teacher) =>
+                    <tr key={teacher.id}>
+                        <SingleTeacher teacher={teacher}/>
+                    </tr>
+                )}
+                </tbody>
+            </table>
+        </span>
     )
 }
+

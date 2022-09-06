@@ -1,15 +1,21 @@
 import axios from "axios";
 import {useEffect, useState} from "react";
-import {NewTeacher, Teacher} from "./Teacher";
+import {Teacher} from "./Teacher";
+import {useNavigate} from "react-router-dom";
+import {NewTeacher} from "./NewTeacher";
 
 export default function useTeacher(){
 
     const[teachers, setTeachers]= useState<Teacher[]> ([]);
+    const navigate = useNavigate();
+    useEffect(() => {getAllTeachers()}, []);
 
-    useEffect(() => {
-        getAllTeachers()},
-            []
-    )
+    const addTeacher = (newTeacher: NewTeacher) => {
+
+        return axios.post("/api/teachers", newTeacher)
+            .then((response) => {getAllTeachers()
+                return response.data})
+    }
 
     const getAllTeachers = () => {
         axios.get("/api/teachers")
@@ -17,20 +23,17 @@ export default function useTeacher(){
             .then((data) => setTeachers(data))
     }
 
-    const addTeacher = (newTeacher: NewTeacher) => {
-
-        return axios.post("/api/teachers", newTeacher)
-            .then((response) => {getAllTeachers()
-            return response.data})
+    const editTeacher = (teacher:Teacher)=>{
+        axios.put("/api/teachers/" + teacher.id, teacher)
+            .then(() => navigate("/teachers/" + teacher.id))
+            .then(getAllTeachers)
     }
 
-    const deleteTeacher = (id: string) => {
-
+    const deleteTeacher = (id: string | undefined) => {
         return axios.delete(`/api/teachers/${id}`)
-            .then((response) => response.status)
-            .catch(error => console.error(error))
+            .then(() => navigate("/teachers"))
             .then(getAllTeachers);
             }
 
-    return{teachers, addTeacher, deleteTeacher}
+    return{teachers, addTeacher, deleteTeacher, editTeacher, getAllTeachers}
 }
