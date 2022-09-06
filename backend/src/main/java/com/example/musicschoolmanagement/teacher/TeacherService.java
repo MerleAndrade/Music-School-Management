@@ -17,7 +17,14 @@ public class TeacherService {
     public Teacher addTeacher(NewTeacher newTeacher) {
         return teacherRepo.save(newTeacher.withRandomId());
     }
-    public boolean deleteTeacher(String id) {
+
+    public Teacher editTeacher(Teacher updatedTeacher){
+        teacherRepo.save(updatedTeacher);
+
+        return updatedTeacher;
+    }
+
+    public boolean deleteTeacher (String id) {
         if (teacherRepo.existsById(id)) {
             teacherRepo.deleteById(id);
             return true;
@@ -32,4 +39,3 @@ public class TeacherService {
                 .collect(Collectors.toSet());
     }
 }
-
