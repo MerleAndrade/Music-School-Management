@@ -1,7 +1,8 @@
-import {ChangeEvent, FormEvent, useEffect, useState} from "react";
+import {FormEvent, useEffect, useState} from "react";
 import * as React from "react";
 import "./CourseGallery.css"
 import {toast} from "react-toastify";
+
 
 type AddCourseProps = {
     addCourse: (name: string) => Promise<void>;
@@ -21,8 +22,8 @@ export default function AddCourse (props: AddCourseProps) {
                     notify("Hi sorry!!! " + error.message)
                 });
     };
-    const handleChange = (event: ChangeEvent<HTMLSelectElement>) => {
-        setInstrumentName(event.target.value);
+    const handleChange = (event: { target: { value: any; }; }) => {
+        console.log(event.target.value);
     };
 
     useEffect(() => {
@@ -38,24 +39,15 @@ export default function AddCourse (props: AddCourseProps) {
     };
 
         return (
+
             <form onSubmit={onInstrumentSubmit}>
                 <h1>Neuen Kurs erstellen</h1>
-                <ul className={"form-style-3"}>
-                    <li>
-                    <label id={"instrument"} >Instrumente: <span className="required">*</span>
+
                     <select
-                        value={instrumentName}
-                        onChange={()=>
-                            handleChange}>
-                        {props.instruments.map(instrument =>(
-                            <option value={instrument}>{instrument}</option>))}
+                        onChange={handleChange} name="instruments" id={instrumentName}>
+                        {props.instruments.map(instrument => (<option value={instrument}>{instrument}</option>))}
                     </select>
-                    </label>
-                    </li>
-                    <li>
-                    <button type={"submit"}>Submit</button>
-                    </li>
-                </ul>
+                <button type={"submit"}>Submit</button>
             </form>
         );
 }
