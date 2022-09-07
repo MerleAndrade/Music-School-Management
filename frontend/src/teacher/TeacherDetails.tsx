@@ -10,7 +10,6 @@ import {
     TextField
 } from "@mui/material";
 import React, {ChangeEvent, useState} from "react";
-import {useParams} from "react-router-dom";
 import {toast} from "react-toastify";
 import SingleTeacher from "./SingleTeacher";
 
@@ -27,15 +26,17 @@ export default function TeacherDetails(props: TeacherDetailsProps) {
     const [teacherLastName, setTeacherLastName] = useState('');
     const [teacherInstrument, setTeacherInstrument] = useState('');
     const [open, setOpen] = React.useState(false);
-    const {id} = useParams();
+    const [selectedTeacher, setSelectedTeacher] = useState('');
 
-    const teacher: Teacher = props.teachers.find(element => element.id === id)!;
+    const teacher: Teacher = props.teachers.find(element => element.id === selectedTeacher)!;
 
-    const handleClickOpen = () => {
-        setOpen(true);
+    const handleClickOpen = (teacherToSelect: string) => {
+        setOpen(true)
+        setSelectedTeacher(teacherToSelect);
     };
     const handleClose = () => {
-        setOpen(false);
+        setOpen(false)
+        setSelectedTeacher('');
     };
     const handleEditTeacher = () => {
         if (props.teachers && teacher) {
@@ -47,7 +48,7 @@ export default function TeacherDetails(props: TeacherDetailsProps) {
             };
             props.editTeacher(updatedTeacher)
             toast.success("Update Erfolgreich");
-            setOpen(false);
+            handleClose();
         } else {
 
             toast.error("Update Fehlgeschlagen")
@@ -80,7 +81,7 @@ export default function TeacherDetails(props: TeacherDetailsProps) {
                 {props.teachers.map((teacher) =>
                     <tr key={teacher.id}>
                         <SingleTeacher teacher={teacher}/>
-                            <Button sx={{backgroundColor: '#E1694E', marginLeft: '20px'}} variant="contained" size={"small"} onClick={handleClickOpen}>Lehrer bearbeiten</Button>
+                            <Button sx={{backgroundColor: '#E1694E', marginLeft: '20px'}} variant="contained" size={"small"} onClick={() => handleClickOpen(teacher.id)}>Lehrer bearbeiten</Button>
                             <Button sx={{backgroundColor: '#E1694E', marginLeft: '20px'}} variant="contained" size={"small"} onClick={() => props.deleteTeacher(teacher.id)}>Lehrer löschen</Button>
                     </tr>
                 )}

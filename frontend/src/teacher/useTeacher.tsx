@@ -25,7 +25,6 @@ export default function useTeacher(){
 
     const editTeacher = (teacher:Teacher)=>{
         axios.put("/api/teachers/" + teacher.id, teacher)
-            .then(() => navigate("/teachers/" + teacher.id))
             .then(getAllTeachers)
     }
 
