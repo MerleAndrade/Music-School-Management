@@ -35,7 +35,7 @@ public class TeacherController {
     @PutMapping("/{id}")
     public ResponseEntity<Teacher> updatedTeacher(
             @PathVariable String id,
-            @RequestBody Teacher teacher){
+            @RequestBody Teacher teacher) {
         Teacher updatedTeacherDetails = teacherService.editTeacher(teacher);
         return ResponseEntity
                 .status(HttpStatus.OK)

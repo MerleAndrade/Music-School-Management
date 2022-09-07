@@ -37,22 +37,23 @@ export default function TeacherDetails(props: TeacherDetailsProps) {
     const handleClose = () => {
         setOpen(false);
     };
+
     const handleEditTeacher = () => {
-        if (props.teachers && teacher) {
+        if(props.teachers && teacher) {
             const updatedTeacher: Teacher = {
                 id: teacher.id,
                 firstName: teacherFirstName,
                 lastName: teacherLastName,
                 instrument: teacherInstrument,
-            };
+                };
             props.editTeacher(updatedTeacher)
-            toast.success("Update Erfolgreich");
+            toast.success("Deine Änderungen wurden gespeichert.")
             setOpen(false);
         } else {
-
-            toast.error("Update Fehlgeschlagen")
+            toast.error("Deine Änderung sind fehlgeschlagen!")
         }
     }
+
 
     function editTeacherFirstName(event: ChangeEvent<HTMLInputElement>) {
         setTeacherFirstName(event.target.value)
@@ -100,7 +101,7 @@ export default function TeacherDetails(props: TeacherDetailsProps) {
                     <Dialog open={open} onClose={handleClose}>
                         <DialogTitle sx={{backgroundColor: '#e8e9ec'}} color={'#E1694E'} fontSize={"big"}>Lehrerdetails bearbeiten</DialogTitle>
                         <DialogContent sx={{backgroundColor: '#e8e9ec'}}>
-                            <DialogContentText sx={{color: '#000'}}>Bitte geben Sie die Änderungen ein.</DialogContentText>
+                            <DialogContentText sx={{color: '#000'}}>Bitte gebe Deine Änderungen ein.</DialogContentText>
                             <TextField
                                 autoFocus
                                 margin="dense"

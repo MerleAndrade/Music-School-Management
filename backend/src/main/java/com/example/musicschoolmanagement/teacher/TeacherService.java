@@ -20,7 +20,6 @@ public class TeacherService {
 
     public Teacher editTeacher(Teacher updatedTeacher){
         teacherRepo.save(updatedTeacher);
-
         return updatedTeacher;
     }
 
