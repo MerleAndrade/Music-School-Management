@@ -10,14 +10,14 @@ type AddCourseProps = {
 
 export default function AddCourse (props: AddCourseProps) {
 
-    const [instrumentName, setInstrumentName] = useState<string>("");
+    const [instrumentName, setInstrumentName] = useState<string>(props.instruments[0]);
 
     const handleChange = (event: ChangeEvent<HTMLSelectElement>) => {
         setInstrumentName(event.target.value)
     }
     const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        props.addCourse("")
+        props.addCourse(instrumentName)
             .then(() => {
                 setInstrumentName("");
             })
