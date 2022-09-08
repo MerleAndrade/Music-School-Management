@@ -4,4 +4,3 @@ export type Teacher = {
     lastName: string,
     instrument: string,
 }
-export type NewTeacher = Omit<Teacher, "id">

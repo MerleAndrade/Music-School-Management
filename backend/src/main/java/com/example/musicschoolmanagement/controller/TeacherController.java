@@ -32,6 +32,16 @@ public class TeacherController {
         return teacherService.addTeacher(teacher);
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<Teacher> updatedTeacher(
+            @PathVariable String id,
+            @RequestBody Teacher teacher){
+        Teacher updatedTeacherDetails = teacherService.editTeacher(teacher);
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(updatedTeacherDetails);
+    }
+
     @DeleteMapping("{id}")
     public ResponseEntity<Void> deleteTeacher(@PathVariable String id) {
         boolean deleteSuccess = teacherService.deleteTeacher(id);

@@ -1,11 +1,13 @@
 import {useEffect, useState} from "react";
 import {NavLink} from "react-router-dom";
-import {NewTeacher, Teacher} from "../teacher/Teacher";
-import AddTeacherFormular from "../teacher/AddTeacherFormular";
+import {Teacher} from "../teacher/Teacher";
+import AddNewTeacher from "../teacher/AddNewTeacher";
 import "./home.css"
 import {NewStudent, Student} from "../student/Student";
 import AddStudentFormular from "../student/AddStudentFormular";
 import AddCourse from "../course/AddCourse";
+import InstrumentList from "../course/InstrumentList";
+import {NewTeacher} from "../teacher/NewTeacher";
 
 type HomeProps ={
 
@@ -13,6 +15,7 @@ type HomeProps ={
     addStudent: (newStudent: NewStudent) => Promise <Student>;
     addCourse: (name: string) => Promise<void>;
     instruments: string[],
+    getAllTeachers: (teacher: Teacher) =>void,
 
 }
 export default function Home (props: HomeProps) {
@@ -25,7 +28,7 @@ export default function Home (props: HomeProps) {
 
     return (
         <nav className= "menu">
-            <NavLink className={"nav"} onClick={() => setTab("Teacher")} to={'/teachers'}>
+            <NavLink className={"nav"} onClick={() => setTab("Lehrer")} to={'/teachers'}>
                 <button className="button">Lehrerliste</button>
             </NavLink>
             <NavLink className={"nav"} onClick={() => setTab("Student")} to={'/students'}>
@@ -35,7 +38,7 @@ export default function Home (props: HomeProps) {
                 <button className="button">Kursliste</button>
             </NavLink>
 
-            <AddTeacherFormular addTeacher={props.addTeacher}/>
+            <AddNewTeacher addNewTeacher={props.addTeacher}/>
             <AddStudentFormular addStudent={props.addStudent}/>
             <AddCourse instruments={props.instruments} addCourse={props.addCourse}/>
 
