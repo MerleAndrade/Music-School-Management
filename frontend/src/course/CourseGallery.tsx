@@ -1,5 +1,6 @@
 type CourseGalleryProps = {
-    instruments : string[]
+    addCourse: (name: string) => Promise<void>;
+    instruments: string[];
 }
 
 export default function CourseGallery(props: CourseGalleryProps) {
@@ -15,10 +16,13 @@ export default function CourseGallery(props: CourseGalleryProps) {
                 </tr>
                 </thead>
 
-                    <tr>
-                        <td></td>
-                    </tr>
+                <tr>
+                    <td></td>
+                </tr>
             </table>
         </>
     )
 }
+
+
+

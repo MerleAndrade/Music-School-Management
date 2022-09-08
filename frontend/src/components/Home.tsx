@@ -5,15 +5,18 @@ import AddNewTeacher from "../teacher/AddNewTeacher";
 import "./home.css"
 import {NewStudent, Student} from "../student/Student";
 import AddStudentFormular from "../student/AddStudentFormular";
-import InstrumentList from "../course/InstrumentList";
 import {NewTeacher} from "../teacher/NewTeacher";
 
+
+import AddCourse from "../course/AddCourse";
 type HomeProps ={
 
     addTeacher: (newTeacher: NewTeacher) => Promise <Teacher>;
     addStudent: (newStudent: NewStudent) => Promise <Student>;
     instruments: string[];
     getAllTeachers: (teacher: Teacher) =>void,
+    addCourse: (name: string) => Promise<void>
+
 }
 export default function Home (props: HomeProps) {
 
@@ -31,13 +34,15 @@ export default function Home (props: HomeProps) {
             <NavLink className={"nav"} onClick={() => setTab("Student")} to={'/students'}>
                 <button className="button">Schülerliste</button>
             </NavLink>
-            <NavLink className={"nav"} onClick={() => setTab("Instrument")} to={'/instrument'}>
+            <NavLink className={"nav"} onClick={() => setTab("Course")} to={'/courses'}>
                 <button className="button">Kursliste</button>
             </NavLink>
 
             <AddNewTeacher addNewTeacher={props.addTeacher}/>
             <AddStudentFormular addStudent={props.addStudent}/>
-            <InstrumentList instruments={props.instruments}/>
+            <AddCourse instruments={props.instruments} addCourse={props.addCourse}/>
+
         </nav>
+
     )
 }
