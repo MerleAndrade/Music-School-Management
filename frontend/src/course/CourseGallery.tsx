@@ -1,13 +1,14 @@
-
 import React, {useEffect, useState} from "react";
 import {Course} from "./Course";
 import axios from "axios";
 
 export default function CourseGallery() {
 
-const [listOfCourses, setListOfCourses] = useState<Course[]>([]);
+    const [listOfCourses, setListOfCourses] = useState<Course[]>([]);
 
-    useEffect(() => {loadAllCourses()}, [])
+    useEffect(() => {
+        loadAllCourses()
+    }, [])
 
 
     const loadAllCourses = () => {
@@ -17,16 +18,20 @@ const [listOfCourses, setListOfCourses] = useState<Course[]>([]);
     }
 
 
-
     return (
         <span>
             <h2>Aktuelle Kursliste</h2>
             <table>
-                <tbody>
-
-                {listOfCourses.map((course) => course.instrument)}
-
-                </tbody>
+                <thead>
+                <tr>
+                <th>Instrument</th>
+                </tr>
+                </thead>
+                {listOfCourses.map((course) =>
+                    <tr key={course.id}>
+                <td>{course.instrument}</td>
+                </tr>
+                    )}
                 </table>
         </span>
     )
