@@ -6,17 +6,15 @@ import "./home.css"
 import {NewStudent, Student} from "../student/Student";
 import AddStudentFormular from "../student/AddStudentFormular";
 import {NewTeacher} from "../teacher/NewTeacher";
-
-
 import AddCourse from "../course/AddCourse";
+
 type HomeProps ={
 
     addTeacher: (newTeacher: NewTeacher) => Promise <Teacher>;
     addStudent: (newStudent: NewStudent) => Promise <Student>;
     instruments: string[];
+    addCourse: (name: string) => Promise<void>;
     getAllTeachers: (teacher: Teacher) =>void,
-    addCourse: (name: string) => Promise<void>
-
 }
 export default function Home (props: HomeProps) {
 
@@ -41,8 +39,6 @@ export default function Home (props: HomeProps) {
             <AddNewTeacher addNewTeacher={props.addTeacher}/>
             <AddStudentFormular addStudent={props.addStudent}/>
             <AddCourse instruments={props.instruments} addCourse={props.addCourse}/>
-
         </nav>
-
     )
 }
