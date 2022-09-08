@@ -1,7 +1,6 @@
-import {FormEvent, useEffect, useState} from "react";
+import {ChangeEvent, FormEvent, useState} from "react";
 import * as React from "react";
-import "./CourseGallery.css"
-import {toast} from "react-toastify";
+import "./addcourse.css"
 
 
 type AddCourseProps = {
@@ -13,41 +12,30 @@ export default function AddCourse (props: AddCourseProps) {
 
     const [instrumentName, setInstrumentName] = useState<string>("");
 
-
-    const onInstrumentSubmit = (event: FormEvent<HTMLFormElement>) => {
+    const handleChange = (event: ChangeEvent<HTMLSelectElement>) => {
+            setInstrumentName(event.target.value)
+    }
+    const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        props.addCourse(instrumentName)
-                .then(() => setInstrumentName(""))
-                .catch((error) => {
-                    notify("Hi sorry!!! " + error.message)
-                });
-    };
-    const handleChange = (event: { target: { value: any; }; }) => {
-        console.log(event.target.value);
-    };
+        props.addCourse("")
+            .then(() => {
+                setInstrumentName("");
+            })
 
-    useEffect(() => {
-        if (props.instruments && props.instruments.length > 0) {
-            setInstrumentName(props.instruments[0])
-        }
-    }, [props.addCourse, props.instruments])
-
-    const notify = (message: string) => {
-        toast.error(message, {
-            position: toast.POSITION.TOP_LEFT
-        });
-    };
+    }
 
         return (
-
-            <form onSubmit={onInstrumentSubmit}>
-                <h1>Neuen Kurs erstellen</h1>
-
-                    <select
-                        onChange={handleChange} name="instruments" id={instrumentName}>
+            <div className="form-style-4">
+            <h1>Neuen Kurs erstellen</h1>
+            <form onSubmit={handleSubmit}>
+                   <label>Wähle ein Instrument aus:<span className="required">*</span></label>
+                       <select
+                        onChange={handleChange} value={instrumentName}>
                         {props.instruments.map(instrument => (<option value={instrument}>{instrument}</option>))}
                     </select>
-                <button type={"submit"}>Submit</button>
+                <button>Submit course</button>
+
             </form>
-        );
+            </div>
+        )
 }

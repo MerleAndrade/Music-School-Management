@@ -8,6 +8,7 @@ export default function useCourse(){
 
 
 
+
     useEffect(() => {getAllInstruments()}, [])
 
     const getAllInstruments = () => {
@@ -24,5 +25,5 @@ export default function useCourse(){
 
 
 
-    return{instruments, addCourse}
+    return {instruments, addCourse}
 }
