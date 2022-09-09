@@ -22,8 +22,8 @@ export default function AllRoutes () {
                 <Route path = {"/students"}
                        element = {<StudentGallery students={students}
                                                   deleteStudent = {deleteStudent}/>}/>
-                <Route path = {"/instrument"}
-                       element = {<CourseGallery instruments={instruments} addCourse={addCourse}/>}/>
+                <Route path = {"/courses"}
+                       element = {<CourseGallery/>}/>
                 <Route path={"/teachers"}
                        element={<TeacherDetails teachers={teacherHook.teachers} editTeacher={teacherHook.editTeacher} deleteTeacher={teacherHook.deleteTeacher} getAllTeachers={teacherHook.getAllTeachers}/>}/>
 

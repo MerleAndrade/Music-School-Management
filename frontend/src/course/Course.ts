@@ -1,5 +1,5 @@
 export type Course = {
     id: string,
-    name: string
+    instrument: string,
 }
 export type NewCourse = Omit<Course, "id">

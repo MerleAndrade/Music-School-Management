@@ -18,7 +18,7 @@ export default function useCourse(){
     }
 
     const addCourse = (instrumentName: string) => {
-        const newCourse: NewCourse = {name: instrumentName};
+        const newCourse: NewCourse = {instrument: instrumentName};
         return axios.post("/api/courses", newCourse)
             .then(getAllInstruments)
     }
