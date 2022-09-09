@@ -23,11 +23,13 @@ export default function CourseGallery() {
                 <thead>
                 <tr>
                     <th scope="col">Lehrername</th>
+                    <th scope="col">Schülername</th>
                     <th scope="col">Instrument</th>
                 </tr>
                      {listOfCourses.map((course) =>
                         <tr key={course.id}>
                         <td>{course.firstNameTeacher}</td>
+                            <td>{course.firstNameStudent}</td>
                         <td>{course.instrument}</td>
                         </tr>)}
                 </thead>

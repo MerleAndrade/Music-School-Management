@@ -6,13 +6,16 @@ import {Course, NewCourse} from "./Course";
 type AddCourseProps = {
     addInstruments: (newCourse: NewCourse) => Promise<Course>;
     instruments: string[],
-    firstNames: string[],
+    firstNameTeachers: string[],
+    firstNameStudents: string[],
 }
+
 
 export default function AddCourse (props: AddCourseProps) {
 
-    const [instrumentName, setInstrumentName] = useState<string>(props.instruments[1]);
-    const [teacherFirstName, setTeacherFirstName] = useState<string>(props.firstNames[1]);
+    const [instrumentName, setInstrumentName] = useState<string>(props.instruments[0]);
+    const [teacherFirstName, setTeacherFirstName] = useState<string>(props.firstNameTeachers[0]);
+    const [studentFirstName, setStudentFirstName] = useState<string>(props.firstNameTeachers[0]);
 
     const handleInstrument = (event: ChangeEvent<HTMLSelectElement>) => {
         setInstrumentName(event.target.value)
@@ -22,17 +25,23 @@ export default function AddCourse (props: AddCourseProps) {
         setTeacherFirstName(event.target.value)
     }
 
+    const handleStudentFirstName = (event: ChangeEvent<HTMLSelectElement>) => {
+        setStudentFirstName(event.target.value)
+    }
+
     const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
         const course: NewCourse = {
             instrument: instrumentName,
-            firstNameTeacher: teacherFirstName
+            firstNameTeacher: teacherFirstName,
+            firstNameStudent: studentFirstName
         }
         props.addInstruments(course)
             .then(() => {
                 setInstrumentName("");
                 setTeacherFirstName("");
+                setStudentFirstName("");
                 })
     }
 
@@ -44,8 +53,14 @@ export default function AddCourse (props: AddCourseProps) {
                 <li><label>Wähle einen Lehrer aus:<span className="required">*</span></label>
                 <select className="field-long"
                     onChange={handleTeacherFirstName} value={teacherFirstName}>
-                    {props.firstNames.map(firstName => (<option value={firstName}>{firstName}</option>))}
+                    {props.firstNameTeachers.map(firstNameTeacher => (<option value={firstNameTeacher}>{firstNameTeacher}</option>))}
                 </select>
+                </li>
+                <li><label>Wähle einen Schüler aus:<span className="required">*</span></label>
+                    <select className="field-long"
+                            onChange={handleStudentFirstName} value={studentFirstName}>
+                        {props.firstNameStudents.map(firstNameStudent => (<option value={firstNameStudent}>{firstNameStudent}</option>))}
+                    </select>
                 </li>
                 <li><label>Wähle ein Instrument aus:<span className="required">*</span></label>
                 <select className="field-long"
