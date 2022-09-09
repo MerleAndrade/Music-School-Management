@@ -10,17 +10,15 @@ export default function StudentGallery (props: StudentGalleryProps){
 
 
     return(
-        <div className="allStudent">
-
+        <>
+            <h2>Schülerliste</h2>
             <table>
-                <caption>aktuelle Schülerliste</caption>
                 <thead>
                 <tr>
                     <th scope="col">Vorname</th>
                     <th scope="col">Nachname</th>
                     <th scope="col">Instrument</th>
                 </tr>
-                </thead>
                 {props.students.map(student =>
                     <tr key={student.id}>
                         <td>{student.firstNameStudent}</td>
@@ -29,7 +27,8 @@ export default function StudentGallery (props: StudentGalleryProps){
                         <button onClick={() => props.deleteStudent(student.id)}>Löschen</button>
                     </tr>
                 )}
+            </thead>
             </table>
-        </div>
+        </>
     )
 }

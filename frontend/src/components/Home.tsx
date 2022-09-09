@@ -25,17 +25,18 @@ export default function Home (props: HomeProps) {
     })
 
     return (
-        <nav className= "menu">
-            <NavLink className={"nav"} onClick={() => setTab("Lehrer")} to={'/teachers'}>
+        <nav>
+            <div>
+            <NavLink onClick={() => setTab("Lehrer")} to={'/teachers'}>
                 <button className="button">Lehrerliste</button>
             </NavLink>
-            <NavLink className={"nav"} onClick={() => setTab("Student")} to={'/students'}>
+            <NavLink onClick={() => setTab("Student")} to={'/students'}>
                 <button className="button">Schülerliste</button>
             </NavLink>
-            <NavLink className={"nav"} onClick={() => setTab("Course")} to={'/courses'}>
+            <NavLink onClick={() => setTab("Course")} to={'/courses'}>
                 <button className="button">Kursliste</button>
             </NavLink>
-
+            </div>
             <AddNewTeacher addNewTeacher={props.addTeacher}/>
             <AddStudentFormular addStudent={props.addStudent}/>
             <AddCourse instruments={props.instruments} addCourse={props.addCourse}/>

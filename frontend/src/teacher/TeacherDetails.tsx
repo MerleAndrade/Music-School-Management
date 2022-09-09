@@ -12,6 +12,7 @@ import {
 import React, {ChangeEvent, useState} from "react";
 import {toast} from "react-toastify";
 import SingleTeacher from "./SingleTeacher";
+import "./teacherdetails.css"
 
 type TeacherDetailsProps = {
     teachers: Teacher [],
@@ -68,27 +69,25 @@ export default function TeacherDetails(props: TeacherDetailsProps) {
     }
 
     return (
-        <>
-             <div>
-            <h2>Aktuelle Lehrerliste</h2>
-            <table>
-                <tbody>
+        <div>
+            <h2 id={"container"}>Lehrerliste</h2>
+             <table>
+                <thead>
                 <tr>
-                    <th>Vorname</th>
-                    <th>Nachname</th>
-                    <th>Instrument</th>
+                    <th scope="col">Vorname</th>
+                    <th scope="col">Nachname</th>
+                    <th scope="col">Instrument</th>
                 </tr>
+                </thead>
                 {props.teachers.map((teacher) =>
                     <tr key={teacher.id}>
-                        <SingleTeacher teacher={teacher}/>
+                       <SingleTeacher teacher={teacher}/>
                             <Button sx={{backgroundColor: '#E1694E', marginLeft: '20px'}} variant="contained" size={"small"} onClick={() => handleClickOpen(teacher.id)}>Lehrer bearbeiten</Button>
                             <Button sx={{backgroundColor: '#E1694E', marginLeft: '20px'}} variant="contained" size={"small"} onClick={() => props.deleteTeacher(teacher.id)}>Lehrer löschen</Button>
                     </tr>
+
                 )}
-                </tbody>
-            </table>
-        </div>
-            <SingleTeacher teacher={teacher}/>
+        </table>
             <Box
                 component="form"
                 sx={{
@@ -140,6 +139,6 @@ export default function TeacherDetails(props: TeacherDetailsProps) {
                     </Dialog>
                 </div>
             </Box>
-        </>
+        </div>
     )
 }
