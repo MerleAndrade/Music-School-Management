@@ -54,4 +54,10 @@ public class TeacherController {
     {
         return teacherService.getAllInstruments();
     }
+
+    @GetMapping("/firstnameteachers")
+    public Set<String> getAllFirstNamesTeacher()
+    {
+        return teacherService.getAllFirstNamesTeacher();
+    }
 }
