@@ -3,6 +3,8 @@ package com.example.musicschoolmanagement.student;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 public class StudentService {
@@ -24,5 +26,12 @@ public class StudentService {
             return true;
         }
         return false;
+    }
+
+    public Set<String> getAllFirstNamesStudent() {
+        List<Student> students = getAllStudents();
+        return students.stream()
+                .map(Student::firstNameStudent)
+                .collect(Collectors.toSet());
     }
 }

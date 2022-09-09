@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Set;
 
 @RestController
 @RequestMapping("/api/students")
@@ -35,5 +36,11 @@ public class StudentController {
     public ResponseEntity<Void> deleteStudent(@PathVariable String id) {
         boolean deleteSuccess = studentService.deleteStudent(id);
         return new ResponseEntity<>(deleteSuccess ? HttpStatus.NO_CONTENT : HttpStatus.NOT_FOUND);
+    }
+
+    @GetMapping("/firstnamestudents")
+    public Set<String> getAllFirstNamesStudent()
+    {
+        return studentService.getAllFirstNamesStudent();
     }
 }

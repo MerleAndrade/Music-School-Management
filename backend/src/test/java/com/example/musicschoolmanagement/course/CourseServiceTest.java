@@ -18,9 +18,9 @@ class CourseServiceTest {
     private final CourseRepo testCourseRepo = mock(CourseRepo.class);
     private final CourseService testCourseService = new CourseService(testCourseRepo);
     private final List<Course> testList = List.of(
-            new Course("123", "Geige", "Felipe"),
-            new Course("456", "Harfe", "Florian"),
-            new Course("789", "Orgel", "Klara")
+            new Course("123", "Geige", "Felipe", "Merle"),
+            new Course("456", "Harfe", "Florian", "Penelope"),
+            new Course("789", "Orgel", "Klara", "Esther")
     );
 
     @Test
@@ -38,8 +38,8 @@ class CourseServiceTest {
     @DisplayName("AddOneCourse")
     void AddCourse() {
         //given
-        NewCourse testNewCourse = new NewCourse("Kontrabass", "Felipe");
-        Course testCourse = new Course("234", "Kontrabass", "Felipe");
+        NewCourse testNewCourse = new NewCourse("Kontrabass", "Felipe", "Merle");
+        Course testCourse = new Course("234", "Kontrabass", "Felipe", "Merle");
         when(testCourseRepo.save(any(Course.class))).thenReturn(testCourse);
         //when
         Course actual = testCourseService.addCourse(testNewCourse);

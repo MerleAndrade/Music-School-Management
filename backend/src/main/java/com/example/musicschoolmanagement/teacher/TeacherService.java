@@ -43,8 +43,5 @@ public class TeacherService {
         return teachers.stream()
                 .map(Teacher::firstName)
                 .collect(Collectors.toSet());
-
     }
-
-
 }
