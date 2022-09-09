@@ -6,7 +6,7 @@
     left: 0;
     width: 100%;
     background-color: #E1694E;
-    position: absolute;
+    position: fixed;
 }
 
 .footer-text {
@@ -16,3 +16,6 @@
     font-family:"Poppins", sans-serif;
     font-size: 12px;
 }
+
+body {display:flex; min-height:100vh; flex-direction:column}
+#stickyFooter {flex:1}
