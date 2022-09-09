@@ -38,4 +38,13 @@ public class TeacherService {
                 .map(Teacher::instrument)
                 .collect(Collectors.toSet());
     }
+    public Set<String> getAllFirstNamesTeacher() {
+        List<Teacher> teachers = getAllTeachers();
+        return teachers.stream()
+                .map(Teacher::firstName)
+                .collect(Collectors.toSet());
+
+    }
+
+
 }

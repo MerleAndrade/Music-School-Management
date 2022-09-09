@@ -25,6 +25,7 @@ export default function CourseGallery() {
                 <thead>
                 <tr>
                 <th>Instrument</th>
+                    <th>Lehrername</th>
                 </tr>
                 </thead>
                 {listOfCourses.map((course) =>

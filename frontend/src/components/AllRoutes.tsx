@@ -11,14 +11,14 @@ export default function AllRoutes () {
 
     const teacherHook = useTeacher();
     const {students, addStudent, deleteStudent} = useStudent();
-    const {instruments, addCourse} = useCourse();
+    const {instruments, addInstruments, firstNames, addTeacherFirstName} = useCourse();
 
     return(
         <>
             <Routes>
                 <Route path ={"/"}
                        element={<Home addTeacher={teacherHook.addTeacher} addStudent={addStudent} instruments={instruments}
-                                      getAllTeachers={teacherHook.getAllTeachers} addCourse={addCourse}/>}/>
+                                      getAllTeachers={teacherHook.getAllTeachers} addInstruments={addInstruments} firstNames={firstNames} addTeacherFirstName={addTeacherFirstName}/>}/>
                 <Route path = {"/students"}
                        element = {<StudentGallery students={students}
                                                   deleteStudent = {deleteStudent}/>}/>
