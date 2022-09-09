@@ -1,11 +1,11 @@
 import {ChangeEvent, FormEvent, useState} from "react";
 import * as React from "react";
 import "./addcourse.css"
+import {Course, NewCourse} from "./Course";
 
 
 type AddCourseProps = {
-    addInstruments: (instrument: string) => Promise<void>;
-    addTeacherFirstName: (firstNameTeacher: string) => Promise<void>;
+    addInstruments: (newCourse: NewCourse) => Promise<Course>;
     instruments: string[],
     firstNames: string[],
 }
@@ -26,14 +26,16 @@ export default function AddCourse (props: AddCourseProps) {
 
     const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        props.addInstruments(instrumentName)
+
+        const course: NewCourse = {
+            instrument: instrumentName,
+            firstNameTeacher: teacherFirstName
+        }
+        props.addInstruments(course)
             .then(() => {
                 setInstrumentName("");
-                })
-        props.addTeacherFirstName(teacherFirstName)
-            .then(() => {
                 setTeacherFirstName("");
-            })
+                })
 
     }
 

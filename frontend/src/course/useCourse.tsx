@@ -1,7 +1,7 @@
 import {useEffect, useState} from "react";
 import axios from "axios";
 import {NewCourse} from "./Course";
-import {NewFirstName} from "./FirstName";
+
 
 export default function useCourse(){
 
@@ -22,24 +22,22 @@ export default function useCourse(){
     }
 
     const getAllFirstNameTeacher = () => {
-        axios.get("/api/teachers/firstNameTeachers")
+        axios.get("/api/teachers/firstnameteachers")
             .then((response) => response.data)
             .then((data) => setFirstNames(data))
     }
 
-    const addInstruments = (instrumentName: string) => {
-        const newCourse: NewCourse = {instrument: instrumentName};
+    const addInstruments = (newCourse: NewCourse) => {
         return axios.post("/api/courses", newCourse)
-            .then(getAllInstruments)
+            .then((response) => {getAllInstruments()
+            return response.data})
+            .then((response) => {getAllFirstNameTeacher()
+                return response.data})
+
     }
 
-    const addTeacherFirstName = (teacherFirstName: string) => {
-        const newFirstName: NewFirstName = {firstNameTeacher: teacherFirstName};
-        return axios.post("/api/courses", newFirstName)
-            .then(getAllFirstNameTeacher)
-    }
 
 
 
-    return {instruments, addInstruments, firstNames, addTeacherFirstName}
+    return {instruments, addInstruments, firstNames}
 }

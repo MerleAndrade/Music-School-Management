@@ -53,7 +53,7 @@ public class TeacherController {
         return teacherService.getAllInstruments();
     }
 
-    @GetMapping("/firstNameTeachers")
+    @GetMapping("/firstnameteachers")
     public Set<String> getAllFirstNamesTeacher()
     {
         return teacherService.getAllFirstNamesTeacher();

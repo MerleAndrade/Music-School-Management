@@ -7,6 +7,7 @@ import {NewStudent, Student} from "../student/Student";
 import AddStudentFormular from "../student/AddStudentFormular";
 import {NewTeacher} from "../teacher/NewTeacher";
 import AddCourse from "../course/AddCourse";
+import {Course, NewCourse} from "../course/Course";
 
 type HomeProps ={
 
@@ -14,8 +15,7 @@ type HomeProps ={
     addStudent: (newStudent: NewStudent) => Promise <Student>;
     instruments: string[];
     firstNames: string[];
-    addInstruments: (instrument: string) => Promise<void>;
-    addTeacherFirstName: (firstNameTeacher: string) => Promise<void>;
+    addInstruments: (newCourse: NewCourse) => Promise<Course>;
     getAllTeachers: (teacher: Teacher) =>void,
 }
 export default function Home (props: HomeProps) {
@@ -41,7 +41,7 @@ export default function Home (props: HomeProps) {
             </div>
             <AddNewTeacher addNewTeacher={props.addTeacher}/>
             <AddStudentFormular addStudent={props.addStudent}/>
-            <AddCourse instruments={props.instruments} addInstruments={props.addInstruments} firstNames={props.firstNames} addTeacherFirstName={props.addTeacherFirstName}/>
+            <AddCourse instruments={props.instruments} addInstruments={props.addInstruments} firstNames={props.firstNames}/>
         </nav>
     )
 }
