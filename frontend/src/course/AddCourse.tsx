@@ -10,7 +10,7 @@ type AddCourseProps = {
 
 export default function AddCourse (props: AddCourseProps) {
 
-    const [instrumentName, setInstrumentName] = useState<string>(props.instruments[0]);
+    const [instrumentName, setInstrumentName] = useState<string>(props.instruments[1]);
 
     const handleChange = (event: ChangeEvent<HTMLSelectElement>) => {
         setInstrumentName(event.target.value)
