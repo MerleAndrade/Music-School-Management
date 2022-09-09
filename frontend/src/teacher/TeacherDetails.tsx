@@ -87,8 +87,6 @@ export default function TeacherDetails(props: TeacherDetailsProps) {
                     </tr>
 
                 )}
-
-
         </table>
             <Box
                 component="form"

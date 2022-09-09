@@ -4,6 +4,7 @@ type SingleTeacherProps = { teacher: Teacher | undefined }
 
 export default function SingleTeacher(props: SingleTeacherProps) {
 
+
     return (
         <>
             <td>{props.teacher?.firstName}</td>
