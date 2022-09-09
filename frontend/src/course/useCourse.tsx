@@ -8,12 +8,8 @@ export default function useCourse(){
     const [instruments, setInstruments] = useState<string[]>([]);
     const [firstNames, setFirstNames] = useState<string[]>([]);
 
-
-
-
     useEffect(() => {getAllInstruments()}, [])
     useEffect(() => {getAllFirstNameTeacher()}, [])
-
 
     const getAllInstruments = () => {
         axios.get("/api/teachers/instruments")
@@ -33,11 +29,7 @@ export default function useCourse(){
             return response.data})
             .then((response) => {getAllFirstNameTeacher()
                 return response.data})
-
     }
-
-
-
 
     return {instruments, addInstruments, firstNames}
 }

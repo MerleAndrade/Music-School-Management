@@ -3,7 +3,6 @@ import * as React from "react";
 import "./addcourse.css"
 import {Course, NewCourse} from "./Course";
 
-
 type AddCourseProps = {
     addInstruments: (newCourse: NewCourse) => Promise<Course>;
     instruments: string[],
@@ -14,7 +13,6 @@ export default function AddCourse (props: AddCourseProps) {
 
     const [instrumentName, setInstrumentName] = useState<string>(props.instruments[1]);
     const [teacherFirstName, setTeacherFirstName] = useState<string>(props.firstNames[1]);
-
 
     const handleInstrument = (event: ChangeEvent<HTMLSelectElement>) => {
         setInstrumentName(event.target.value)
@@ -36,7 +34,6 @@ export default function AddCourse (props: AddCourseProps) {
                 setInstrumentName("");
                 setTeacherFirstName("");
                 })
-
     }
 
     return (

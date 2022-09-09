@@ -28,7 +28,7 @@ export default function Home (props: HomeProps) {
 
     return (
         <nav>
-            <div>
+            <div className={"wrapper"}>
             <NavLink onClick={() => setTab("Lehrer")} to={'/teachers'}>
                 <button className="button">Lehrerliste</button>
             </NavLink>

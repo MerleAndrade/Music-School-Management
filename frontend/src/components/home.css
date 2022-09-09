@@ -12,8 +12,13 @@ button {
     transition: all 0.2s;
     background: #486f73;
 }
+
 button:hover{
     color:#fff;
     background-color:#E1694E;
 }
 
+.wrapper {
+    text-align: center;
+    margin: 5px;
+}
