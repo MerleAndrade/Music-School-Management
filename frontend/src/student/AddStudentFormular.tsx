@@ -58,7 +58,7 @@ export default function AddStudentFormular(props: AddStudentFormularProps) {
                 </label>
                 </li>
                 <li>
-                    <input type="submit" value="Submit"/>
+                    <input type="submit" value="Submit Student"/>
                 </li>
             </ul>
         </form>

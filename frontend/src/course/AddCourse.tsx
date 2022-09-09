@@ -40,22 +40,27 @@ export default function AddCourse (props: AddCourseProps) {
     }
 
     return (
-        <div className="form-style-4">
+        <div>
             <h1>Neuen Kurs erstellen</h1>
+            <ul className="form-style-4">
             <form onSubmit={handleSubmit}>
-                <label>Wähle einen Lehrer aus:<span className="required">*</span></label>
-                <select
+                <li><label>Wähle einen Lehrer aus:<span className="required">*</span></label>
+                <select className="field-long"
                     onChange={handleTeacherFirstName} value={teacherFirstName}>
                     {props.firstNames.map(firstName => (<option value={firstName}>{firstName}</option>))}
                 </select>
-                <label>Wähle ein Instrument aus:<span className="required">*</span></label>
-                <select
+                </li>
+                <li><label>Wähle ein Instrument aus:<span className="required">*</span></label>
+                <select className="field-long"
                     onChange={handleInstrument} value={instrumentName}>
                     {props.instruments.map(instrument => (<option value={instrument}>{instrument}</option>))}
                 </select>
-                <button>Submit course</button>
-
+                </li>
+                <li>
+                    <input type="submit" value="Submit Course"/>
+                </li>
             </form>
+            </ul>
         </div>
     )
 }
