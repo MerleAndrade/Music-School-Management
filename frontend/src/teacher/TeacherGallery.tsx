@@ -1,5 +1,5 @@
 import {Teacher} from "./Teacher";
-import "./teachergallery.css"
+import "./teacherdetails.css"
 import SingleTeacher from "./SingleTeacher";
 import React from "react";
 
