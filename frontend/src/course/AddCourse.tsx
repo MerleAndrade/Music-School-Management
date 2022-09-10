@@ -15,7 +15,7 @@ export default function AddCourse (props: AddCourseProps) {
 
     const [instrumentName, setInstrumentName] = useState<string>(props.instruments[0]);
     const [teacherFirstName, setTeacherFirstName] = useState<string>(props.firstNameTeachers[0]);
-    const [studentFirstName, setStudentFirstName] = useState<string>(props.firstNameTeachers[0]);
+    const [studentFirstName, setStudentFirstName] = useState<string>(props.firstNameStudents[0]);
 
     const handleInstrument = (event: ChangeEvent<HTMLSelectElement>) => {
         setInstrumentName(event.target.value)

@@ -2,7 +2,11 @@ import React, {useEffect, useState} from "react";
 import {Course} from "./Course";
 import axios from "axios";
 
-export default function CourseGallery() {
+type CourseGalleryProps = {
+    deleteCourse : (id: string) => Promise<void>,
+}
+
+export default function CourseGallery(props: CourseGalleryProps) {
 
     const [listOfCourses, setListOfCourses] = useState<Course[]>([]);
 
@@ -31,6 +35,7 @@ export default function CourseGallery() {
                         <td>{course.firstNameTeacher}</td>
                         <td>{course.firstNameStudent}</td>
                         <td>{course.instrument}</td>
+                        <button onClick={() => props.deleteCourse(course.id)}>Löschen</button>
                     </tr>)}
                 </thead>
             </table>

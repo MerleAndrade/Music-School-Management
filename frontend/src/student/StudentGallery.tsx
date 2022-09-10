@@ -2,8 +2,8 @@ import {Student} from "./Student";
 import "./studentgallery.css"
 
 type StudentGalleryProps = {
-    students : Student[]
-    deleteStudent : (id: string) => Promise<void>
+    students : Student[],
+    deleteStudent : (id: string) => Promise<void>,
 }
 
 export default function StudentGallery (props: StudentGalleryProps){

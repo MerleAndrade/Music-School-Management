@@ -2,6 +2,7 @@ import {useEffect, useState} from "react";
 import axios from "axios";
 import {NewCourse} from "./Course";
 
+
 export default function useCourse(){
 
     const [instruments, setInstruments] = useState<string[]>([]);
@@ -40,5 +41,12 @@ export default function useCourse(){
                 return response.data})
     }
 
-    return {instruments, addInstruments, firstNameTeachers, firstNameStudents}
+    const deleteCourse = (id: string) => {
+        return axios.delete(`/api/courses/${id}`)
+            .then((response) => response.status)
+            .catch(error => console.error(error))
+            .then(getAllInstruments);
+    }
+
+    return {instruments, addInstruments, firstNameTeachers, firstNameStudents, deleteCourse}
 }
