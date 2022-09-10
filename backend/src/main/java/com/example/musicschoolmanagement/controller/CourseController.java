@@ -5,6 +5,7 @@ import com.example.musicschoolmanagement.course.CourseService;
 import com.example.musicschoolmanagement.course.NewCourse;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -28,5 +29,10 @@ public class CourseController {
         return courseService.addCourse(course);
     }
 
+    @DeleteMapping("{id}")
+    public ResponseEntity<Void> deleteCourse(@PathVariable String id) {
+        boolean deleteSuccess = courseService.deleteCourse(id);
+        return new ResponseEntity<>(deleteSuccess ? HttpStatus.NO_CONTENT : HttpStatus.NOT_FOUND);
+    }
 
 }
