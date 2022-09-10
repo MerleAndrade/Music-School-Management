@@ -11,7 +11,7 @@ export default function AllRoutes () {
 
     const teacherHook = useTeacher();
     const {students, addStudent, deleteStudent} = useStudent();
-    const {instruments, addInstruments, firstNameTeachers, firstNameStudents, deleteCourse} = useCourse();
+    const {instruments, addInstruments, firstNameTeachers, firstNameStudents} = useCourse();
 
     return(
         <>
@@ -23,7 +23,7 @@ export default function AllRoutes () {
                        element = {<StudentGallery students={students}
                                                   deleteStudent = {deleteStudent}/>}/>
                 <Route path = {"/courses"}
-                       element = {<CourseGallery deleteCourse={deleteCourse}/>}/>
+                       element = {<CourseGallery/>}/>
                 <Route path={"/teachers"}
                        element={<TeacherDetails teachers={teacherHook.teachers} editTeacher={teacherHook.editTeacher} deleteTeacher={teacherHook.deleteTeacher} getAllTeachers={teacherHook.getAllTeachers}/>}/>
             </Routes>

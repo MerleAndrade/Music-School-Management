@@ -41,12 +41,5 @@ export default function useCourse(){
                 return response.data})
     }
 
-    const deleteCourse = (id: string) => {
-        return axios.delete(`/api/courses/${id}`)
-            .then((response) => response.status)
-            .catch(error => console.error(error))
-            .then(getAllInstruments);
-    }
-
-    return {instruments, addInstruments, firstNameTeachers, firstNameStudents, deleteCourse}
+    return {instruments, addInstruments, firstNameTeachers, firstNameStudents}
 }

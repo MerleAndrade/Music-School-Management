@@ -51,7 +51,6 @@ export default function TeacherDetails(props: TeacherDetailsProps) {
             toast.success("Update Erfolgreich");
             handleClose();
         } else {
-
             toast.error("Update Fehlgeschlagen")
         }
     }
