@@ -2,7 +2,6 @@ import {useEffect, useState} from "react";
 import axios from "axios";
 import {NewCourse} from "./Course";
 
-
 export default function useCourse(){
 
     const [instruments, setInstruments] = useState<string[]>([]);

@@ -83,19 +83,13 @@ class StudentControllerIntegrationTest {
     @DisplayName("getAllStudentsFirstName")
     void getAllFirstNamesStudent() throws Exception {
 
-        String saveResult = mockMvc.perform(post("/api/students")
+       mockMvc.perform(post("/api/students")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("""
                                 {"firstNameStudent": "Felipe",
                                 "lastNameStudent": "Andrade",
                                 "instrumentStudent": "Kontrabass"}
-                                """))
-                .andReturn()
-                .getResponse()
-                .getContentAsString();
-
-        Student saveResultStudent = objectMapper.readValue(saveResult, Student.class);
-        String id = saveResultStudent.id();
+                                """));
 
         mockMvc.perform(get("/api/students/firstnamestudents"))
                 .andExpect(status().isOk())

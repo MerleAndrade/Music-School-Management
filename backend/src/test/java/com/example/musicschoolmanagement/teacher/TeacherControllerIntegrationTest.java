@@ -140,19 +140,13 @@ class TeacherControllerIntegrationTest {
     @DisplayName("getAllInstruments")
     void getAllInstruments() throws Exception {
 
-        String saveResult = mockMvc.perform(post("/api/teachers")
+        mockMvc.perform(post("/api/teachers")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("""
                                 {"firstName": "Felipe",
                                 "lastName": "Andrade",
                                 "instrument": "Kontrabass"}
-                                """))
-                .andReturn()
-                .getResponse()
-                .getContentAsString();
-
-        Teacher saveResultTeacher = objectMapper.readValue(saveResult, Teacher.class);
-        String id = saveResultTeacher.id();
+                                """));
 
         mockMvc.perform(get("/api/teachers/instruments"))
                 .andExpect(status().isOk())
@@ -166,19 +160,13 @@ class TeacherControllerIntegrationTest {
     @DisplayName("getAllTeachersFirstName")
     void getAllFirstNamesTeacher() throws Exception {
 
-        String saveResult = mockMvc.perform(post("/api/teachers")
+        mockMvc.perform(post("/api/teachers")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("""
                                 {"firstName": "Felipe",
                                 "lastName": "Andrade",
                                 "instrument": "Kontrabass"}
-                                """))
-                .andReturn()
-                .getResponse()
-                .getContentAsString();
-
-        Teacher saveResultTeacher = objectMapper.readValue(saveResult, Teacher.class);
-        String id = saveResultTeacher.id();
+                                """));
 
         mockMvc.perform(get("/api/teachers/firstnameteachers"))
                 .andExpect(status().isOk())
