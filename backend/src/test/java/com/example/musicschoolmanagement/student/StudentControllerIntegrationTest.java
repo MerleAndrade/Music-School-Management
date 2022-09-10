@@ -1,4 +1,5 @@
 package com.example.musicschoolmanagement.student;
+import com.example.musicschoolmanagement.teacher.Teacher;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -76,6 +77,24 @@ class StudentControllerIntegrationTest {
                 .andExpect(content().json("""
                         []
                         """));
+    }
+    @Test
+    @DirtiesContext
+    @DisplayName("getAllStudentsFirstName")
+    void getAllFirstNamesStudent() throws Exception {
 
+       mockMvc.perform(post("/api/students")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("""
+                                {"firstNameStudent": "Felipe",
+                                "lastNameStudent": "Andrade",
+                                "instrumentStudent": "Kontrabass"}
+                                """));
+
+        mockMvc.perform(get("/api/students/firstnamestudents"))
+                .andExpect(status().isOk())
+                .andExpect(content().json("""
+                        ["Felipe"]
+                        """));
     }
 }

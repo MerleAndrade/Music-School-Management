@@ -17,6 +17,8 @@ public class TeacherController {
 
     private final TeacherService teacherService;
 
+
+
     public TeacherController(TeacherService teacherService) {
         this.teacherService = teacherService;
     }
@@ -53,4 +55,9 @@ public class TeacherController {
         return teacherService.getAllInstruments();
     }
 
+    @GetMapping("/firstnameteachers")
+    public Set<String> getAllFirstNamesTeacher()
+    {
+        return teacherService.getAllFirstNamesTeacher();
+    }
 }

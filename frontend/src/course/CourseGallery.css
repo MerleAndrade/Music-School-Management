@@ -1,49 +1,25 @@
-#saveButton {
-    background-color: #E1694E;
-    font-family: "Poppins", sans-serif;
+.body {
+    font-family:"Poppins", sans-serif;
+    font-size: 15px;
 }
 
-h1 {
-    font:25px "Poppins", sans-serif;
-}
-
-.form-style-3 {
-    margin:10px auto;
-    max-width: 400px;
-    padding: 20px 12px 10px 20px;
-    font: 20px "Poppins", sans-serif;
-}
-
-.form-style-3 li {
-    padding: 0;
-    display: block;
-    list-style: none;
-    margin: 10px 0 0 0;
-}
-
-.form-style-3 .required{
-    color:red;
-}
-
-.form-style-3 .field-long{
+table {
+    border-collapse: collapse;
     width: 100%;
 }
 
-.form-style-3 label{
-    margin:0 0 3px 0;
-    padding:0;
-    display:block;
-    font-weight: bold;
-}
-.form-style-3 input[type=submit], .form-style-1 input[type=button]{
-    background: #486f73;
-    padding: 8px 15px 8px 15px;
-    border: none;
+th[scope="col"] {
+    background-color: #486f73;
     color: #fff;
 }
-.form-style-3 input[type=submit]:hover, .form-style-1 input[type=button]:hover{
-    background: #E1694E;
-    box-shadow:none;
-    -moz-box-shadow:none;
-    -webkit-box-shadow:none;
+
+th {
+    padding: 0.5rem;
+    text-align: left;
+    border: 1px solid #999;
+}
+
+#container {
+    display: flex;
+    justify-content: center;
 }

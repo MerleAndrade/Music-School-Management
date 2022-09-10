@@ -10,31 +10,30 @@ export default function CourseGallery() {
         loadAllCourses()
     }, [])
 
-
     const loadAllCourses = () => {
         axios.get("/api/courses")
             .then((response) => response.data)
             .then((data) => setListOfCourses(data))
     }
 
-
     return (
         <span>
-            <h2>Aktuelle Kursliste</h2>
+            <h2 id={"container"}>Kursliste</h2>
             <table>
                 <thead>
                 <tr>
-                <th>Instrument</th>
+                    <th scope="col">Lehrername</th>
+                    <th scope="col">Schülername</th>
+                    <th scope="col">Instrument</th>
                 </tr>
+                     {listOfCourses.map((course) =>
+                        <tr key={course.id}>
+                        <td>{course.firstNameTeacher}</td>
+                            <td>{course.firstNameStudent}</td>
+                        <td>{course.instrument}</td>
+                        </tr>)}
                 </thead>
-                {listOfCourses.map((course) =>
-                    <tr key={course.id}>
-                <td>{course.instrument}</td>
-                </tr>
-                    )}
-                </table>
+            </table>
         </span>
     )
 }
-
-

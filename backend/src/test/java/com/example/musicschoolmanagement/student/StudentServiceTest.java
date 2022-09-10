@@ -4,7 +4,9 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
@@ -59,5 +61,17 @@ class StudentServiceTest {
         // then
         verify(testStudentRepo).deleteById(testStudent.id());
 
+    }
+
+    @Test
+    @DisplayName("GetAllFirstNameStudents")
+    void getAllFirstNamesStudent() {
+        //given
+        when(testStudentRepo.findAll()).thenReturn(testList);
+        //when
+        Set<String> expected = new HashSet<>(List.of("Carlotta", "Josephine", "Linus"));
+        Set<String> actual = testStudentService.getAllFirstNamesStudent();
+        //then
+        Assertions.assertEquals(expected, actual);
     }
 }

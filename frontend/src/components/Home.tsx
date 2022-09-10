@@ -7,13 +7,16 @@ import {NewStudent, Student} from "../student/Student";
 import AddStudentFormular from "../student/AddStudentFormular";
 import {NewTeacher} from "../teacher/NewTeacher";
 import AddCourse from "../course/AddCourse";
+import {Course, NewCourse} from "../course/Course";
 
 type HomeProps ={
 
     addTeacher: (newTeacher: NewTeacher) => Promise <Teacher>;
     addStudent: (newStudent: NewStudent) => Promise <Student>;
     instruments: string[];
-    addCourse: (name: string) => Promise<void>;
+    firstNameTeachers: string[],
+    firstNameStudents: string[],
+    addInstruments: (newCourse: NewCourse) => Promise<Course>;
     getAllTeachers: (teacher: Teacher) =>void,
 }
 export default function Home (props: HomeProps) {
@@ -26,7 +29,7 @@ export default function Home (props: HomeProps) {
 
     return (
         <nav>
-            <div>
+            <div className={"wrapper"}>
             <NavLink onClick={() => setTab("Lehrer")} to={'/teachers'}>
                 <button className="button">Lehrerliste</button>
             </NavLink>
@@ -39,7 +42,7 @@ export default function Home (props: HomeProps) {
             </div>
             <AddNewTeacher addNewTeacher={props.addTeacher}/>
             <AddStudentFormular addStudent={props.addStudent}/>
-            <AddCourse instruments={props.instruments} addCourse={props.addCourse}/>
+            <AddCourse instruments={props.instruments} addInstruments={props.addInstruments} firstNameTeachers={props.firstNameTeachers} firstNameStudents={props.firstNameStudents}/>
         </nav>
     )
 }

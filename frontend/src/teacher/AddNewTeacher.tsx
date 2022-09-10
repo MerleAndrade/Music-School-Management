@@ -60,7 +60,7 @@ export default function AddNewTeacher(props: AddNewTeacherProps) {
                     </label>
                     </li>
                     <li>
-                        <input type="submit" value="Submit"/>
+                        <input type="submit" value="Submit Teacher"/>
                     </li>
                 </ul>
             </form>

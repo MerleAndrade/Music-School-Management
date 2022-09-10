@@ -91,4 +91,16 @@ class TeacherServiceTest {
         //then
         Assertions.assertEquals(expected, actual);
     }
+
+    @Test
+    @DisplayName("GetAllFirstNameTeachers")
+    void getAllFirstNamesTeacher() {
+        //given
+        when(testTeacherRepo.findAll()).thenReturn(testList);
+        //when
+        Set<String> expected = new HashSet<>(List.of("Carlotta", "Josephine", "Linus"));
+        Set<String> actual = testTeacherService.getAllFirstNamesTeacher();
+        //then
+        Assertions.assertEquals(expected, actual);
+    }
     }

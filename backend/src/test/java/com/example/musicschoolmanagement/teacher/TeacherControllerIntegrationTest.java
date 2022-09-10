@@ -137,27 +137,41 @@ class TeacherControllerIntegrationTest {
 
     @Test
     @DirtiesContext
-    @DisplayName("getAllTeachers")
+    @DisplayName("getAllInstruments")
     void getAllInstruments() throws Exception {
 
-        String saveResult = mockMvc.perform(post("/api/teachers")
+        mockMvc.perform(post("/api/teachers")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("""
                                 {"firstName": "Felipe",
                                 "lastName": "Andrade",
                                 "instrument": "Kontrabass"}
-                                """))
-                .andReturn()
-                .getResponse()
-                .getContentAsString();
-
-        Teacher saveResultTeacher = objectMapper.readValue(saveResult, Teacher.class);
-        String id = saveResultTeacher.id();
+                                """));
 
         mockMvc.perform(get("/api/teachers/instruments"))
                 .andExpect(status().isOk())
                 .andExpect(content().json("""
                         ["Kontrabass"]
+                        """));
+    }
+
+    @Test
+    @DirtiesContext
+    @DisplayName("getAllTeachersFirstName")
+    void getAllFirstNamesTeacher() throws Exception {
+
+        mockMvc.perform(post("/api/teachers")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("""
+                                {"firstName": "Felipe",
+                                "lastName": "Andrade",
+                                "instrument": "Kontrabass"}
+                                """));
+
+        mockMvc.perform(get("/api/teachers/firstnameteachers"))
+                .andExpect(status().isOk())
+                .andExpect(content().json("""
+                        ["Felipe"]
                         """));
     }
 }

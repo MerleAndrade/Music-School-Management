@@ -78,15 +78,14 @@ export default function TeacherDetails(props: TeacherDetailsProps) {
                     <th scope="col">Nachname</th>
                     <th scope="col">Instrument</th>
                 </tr>
-                </thead>
                 {props.teachers.map((teacher) =>
                     <tr key={teacher.id}>
                        <SingleTeacher teacher={teacher}/>
                             <Button sx={{backgroundColor: '#E1694E', marginLeft: '20px'}} variant="contained" size={"small"} onClick={() => handleClickOpen(teacher.id)}>Lehrer bearbeiten</Button>
                             <Button sx={{backgroundColor: '#E1694E', marginLeft: '20px'}} variant="contained" size={"small"} onClick={() => props.deleteTeacher(teacher.id)}>Lehrer löschen</Button>
                     </tr>
-
                 )}
+                </thead>
         </table>
             <Box
                 component="form"
