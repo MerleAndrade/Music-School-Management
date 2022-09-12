@@ -61,6 +61,16 @@ class CourseServiceTest {
 
         // then
         verify(testCourseRepo).deleteById(testCourse.id());
+    }
 
+    @Test
+    @DisplayName("DeleteCourseDoesNotExist")
+    void deleteCourseDoesNotExistTest() {
+        Course testCourse = new Course("dfjlsdjfklj", "Kontrabass", null, null);
+        when(testCourseRepo.existsById(testCourse.id())).thenReturn(false);
+        doNothing().when(testCourseRepo).deleteById(testCourse.id());
+
+        testCourseService.deleteCourse(testCourse.id());
+        verify(testCourseRepo, times(0)).deleteById(testCourse.id());
     }
 }
