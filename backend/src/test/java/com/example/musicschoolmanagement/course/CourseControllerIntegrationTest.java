@@ -1,5 +1,7 @@
 package com.example.musicschoolmanagement.course;
 
+import com.example.musicschoolmanagement.student.Student;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -20,6 +23,9 @@ class CourseControllerIntegrationTest {
 
     @Autowired
     MockMvc mockMvc;
+
+    @Autowired
+    ObjectMapper objectMapper;
 
     @Test
     @DirtiesContext
@@ -44,6 +50,34 @@ class CourseControllerIntegrationTest {
                 .andExpect(status().isCreated())
                 .andExpect(content().json("""
                         {"instrument": "Kontrabass"}
+                        """));
+    }
+
+    @Test
+    @DirtiesContext
+    @DisplayName("DeleteCourse")
+    void deleteCourse() throws Exception {
+        String saveResult =  mockMvc.perform(post("/api/courses")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("""
+                        {"firstNameStudent": "Felipe",
+                        "lastNameStudent": "Andrade",
+                        "instrumentStudent": "Kontrabass"}
+                        """))
+                .andReturn()
+                .getResponse()
+                .getContentAsString();
+
+        Course saveResultCourses = objectMapper.readValue(saveResult, Course.class);
+        String id = saveResultCourses.id();
+
+        mockMvc.perform(MockMvcRequestBuilders.delete("/api/courses/" + id))
+                .andExpect(status().is(204));
+
+        mockMvc.perform(MockMvcRequestBuilders.get("/api/courses"))
+                .andExpect(status().isOk())
+                .andExpect(content().json("""
+                        []
                         """));
     }
 
