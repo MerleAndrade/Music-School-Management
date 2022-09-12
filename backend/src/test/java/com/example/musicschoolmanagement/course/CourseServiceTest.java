@@ -50,7 +50,7 @@ class CourseServiceTest {
 
     @Test
     @DisplayName("DeleteCourse")
-    void deleteStudent() {
+    void deleteCourse() {
         //given
         Course testCourse = new Course("sldkfjlsdkj", "Kontrabass", "Felipe", "Merle");
         when(testCourseRepo.existsById(testCourse.id())).thenReturn(true);
