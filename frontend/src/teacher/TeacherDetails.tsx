@@ -9,7 +9,7 @@ import {
     DialogTitle,
     TextField
 } from "@mui/material";
-import React, {ChangeEvent, useState} from "react";
+import React, {ChangeEvent, useEffect, useState} from "react";
 import {toast} from "react-toastify";
 import SingleTeacher from "./SingleTeacher";
 import "./teacherdetails.css"
@@ -18,18 +18,25 @@ type TeacherDetailsProps = {
     teachers: Teacher [],
     editTeacher: (teacher: Teacher) => void,
     deleteTeacher: (id: string) => void,
-    getAllTeachers: (teacher: Teacher) =>void,
+    getAllTeachers: (teacher: Teacher) => void,
 }
 
 export default function TeacherDetails(props: TeacherDetailsProps) {
 
+    const [selectedTeacher, setSelectedTeacher] = useState('');
     const [teacherFirstName, setTeacherFirstName] = useState('');
     const [teacherLastName, setTeacherLastName] = useState('');
     const [teacherInstrument, setTeacherInstrument] = useState('');
     const [open, setOpen] = React.useState(false);
-    const [selectedTeacher, setSelectedTeacher] = useState('');
+    const teacher: Teacher | undefined = props.teachers.find(element => element.id === selectedTeacher);
 
-    const teacher: Teacher = props.teachers.find(element => element.id === selectedTeacher)!;
+    useEffect(() => {
+        if (teacher) {
+            setTeacherFirstName(teacher.firstName)
+            setTeacherLastName(teacher.lastName)
+            setTeacherInstrument(teacher.instrument)
+        }
+    }, [teacher])
 
     const handleClickOpen = (teacherToSelect: string) => {
         setOpen(true)
@@ -71,22 +78,24 @@ export default function TeacherDetails(props: TeacherDetailsProps) {
     return (
         <div>
             <h2 id={"container"}>Lehrerliste</h2>
-             <table>
+            <table>
                 <thead>
                 <tr>
                     <th scope="col">Vorname</th>
                     <th scope="col">Nachname</th>
                     <th scope="col">Instrument</th>
                 </tr>
-                {props.teachers.map((teacher) =>
+                {props.teachers.map(teacher =>
                     <tr key={teacher.id}>
-                       <SingleTeacher teacher={teacher}/>
-                            <Button sx={{backgroundColor: '#E1694E', marginLeft: '20px'}} variant="contained" size={"small"} onClick={() => handleClickOpen(teacher.id)}>Lehrer bearbeiten</Button>
-                            <Button sx={{backgroundColor: '#E1694E', marginLeft: '20px'}} variant="contained" size={"small"} onClick={() => props.deleteTeacher(teacher.id)}>Lehrer löschen</Button>
+                        <SingleTeacher teacher={teacher}/>
+                        <Button sx={{backgroundColor: '#E1694E', marginLeft: '20px'}} variant="contained" size={"small"}
+                                onClick={() => handleClickOpen(teacher.id)}>Lehrer bearbeiten</Button>
+                        <Button sx={{backgroundColor: '#E1694E', marginLeft: '20px'}} variant="contained" size={"small"}
+                                onClick={() => props.deleteTeacher(teacher.id)}>Lehrer löschen</Button>
                     </tr>
                 )}
                 </thead>
-        </table>
+            </table>
             <Box
                 component="form"
                 sx={{
@@ -97,9 +106,11 @@ export default function TeacherDetails(props: TeacherDetailsProps) {
             >
                 <div>
                     <Dialog open={open} onClose={handleClose}>
-                        <DialogTitle sx={{backgroundColor: '#e8e9ec'}} color={'#E1694E'} fontSize={"big"}>Lehrerdetails bearbeiten</DialogTitle>
+                        <DialogTitle sx={{backgroundColor: '#e8e9ec'}} color={'#E1694E'} fontSize={"big"}>Lehrerdetails
+                            bearbeiten</DialogTitle>
                         <DialogContent sx={{backgroundColor: '#e8e9ec'}}>
-                            <DialogContentText sx={{color: '#000'}}>Bitte geben Sie die Änderungen ein.</DialogContentText>
+                            <DialogContentText sx={{color: '#000'}}>Bitte geben Sie die Änderungen
+                                ein.</DialogContentText>
                             <TextField
                                 autoFocus
                                 margin="dense"
@@ -107,7 +118,7 @@ export default function TeacherDetails(props: TeacherDetailsProps) {
                                 type="text"
                                 fullWidth
                                 variant="standard"
-                                defaultValue={teacher?.firstName}
+                                value={teacherFirstName}
                                 onChange={editTeacherFirstName}
                             />
                             <TextField
@@ -117,7 +128,7 @@ export default function TeacherDetails(props: TeacherDetailsProps) {
                                 type="text"
                                 fullWidth
                                 variant="standard"
-                                defaultValue={teacher?.lastName}
+                                value={teacherLastName}
                                 onChange={editTeacherLastName}
                             />
                             <TextField
@@ -127,7 +138,7 @@ export default function TeacherDetails(props: TeacherDetailsProps) {
                                 type="text"
                                 fullWidth
                                 variant="standard"
-                                defaultValue={teacher?.instrument}
+                                value={teacherInstrument}
                                 onChange={editTeacherInstrument}
                             />
                         </DialogContent>
