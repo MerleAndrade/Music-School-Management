@@ -12,8 +12,15 @@ public class CourseService {
         return courseRepo.findAll();
     }
 
-
     public Course addCourse(NewCourse newCourse) {
         return courseRepo.save(newCourse.withRandomId());
+    }
+
+    public boolean deleteCourse(String id) {
+        if (courseRepo.existsById(id)) {
+            courseRepo.deleteById(id);
+            return true;
+        }
+        return false;
     }
 }

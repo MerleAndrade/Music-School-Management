@@ -16,6 +16,13 @@ export default function CourseGallery() {
             .then((data) => setListOfCourses(data))
     }
 
+    const deleteCourse = (id: string) => {
+        return axios.delete(`/api/courses/${id}`)
+            .then((response) => response.status)
+            .catch(error => console.error(error))
+            .then(loadAllCourses);
+    }
+
     return (
         <span>
             <h2 id={"container"}>Kursliste</h2>
@@ -26,12 +33,13 @@ export default function CourseGallery() {
                     <th scope="col">Schülername</th>
                     <th scope="col">Instrument</th>
                 </tr>
-                     {listOfCourses.map((course) =>
-                        <tr key={course.id}>
+                {listOfCourses.map((course) =>
+                    <tr key={course.id}>
                         <td>{course.firstNameTeacher}</td>
-                            <td>{course.firstNameStudent}</td>
+                        <td>{course.firstNameStudent}</td>
                         <td>{course.instrument}</td>
-                        </tr>)}
+                        <button onClick={() => deleteCourse(course.id)}>Löschen</button>
+                    </tr>)}
                 </thead>
             </table>
         </span>

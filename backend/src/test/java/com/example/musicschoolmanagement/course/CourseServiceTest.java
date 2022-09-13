@@ -1,5 +1,6 @@
 package com.example.musicschoolmanagement.course;
 
+import com.example.musicschoolmanagement.student.Student;
 import com.example.musicschoolmanagement.teacher.NewTeacher;
 import com.example.musicschoolmanagement.teacher.Teacher;
 import org.junit.jupiter.api.Assertions;
@@ -10,8 +11,8 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.verify;
 
 class CourseServiceTest {
 
@@ -45,5 +46,31 @@ class CourseServiceTest {
         Course actual = testCourseService.addCourse(testNewCourse);
         // then
         Assertions.assertEquals(testCourse, actual);
+    }
+
+    @Test
+    @DisplayName("DeleteCourse")
+    void deleteCourse() {
+        //given
+        Course testCourse = new Course("sldkfjlsdkj", "Kontrabass", "Felipe", "Merle");
+        when(testCourseRepo.existsById(testCourse.id())).thenReturn(true);
+
+        //when
+        doNothing().when(testCourseRepo).deleteById(testCourse.id());
+        testCourseRepo.deleteById(testCourse.id());
+
+        // then
+        verify(testCourseRepo).deleteById(testCourse.id());
+    }
+
+    @Test
+    @DisplayName("DeleteCourseDoesNotExist")
+    void deleteCourseDoesNotExistTest() {
+        Course testCourse = new Course("dfjlsdjfklj", "Kontrabass", null, null);
+        when(testCourseRepo.existsById(testCourse.id())).thenReturn(false);
+        doNothing().when(testCourseRepo).deleteById(testCourse.id());
+
+        testCourseService.deleteCourse(testCourse.id());
+        verify(testCourseRepo, times(0)).deleteById(testCourse.id());
     }
 }
