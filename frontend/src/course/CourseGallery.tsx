@@ -32,13 +32,14 @@ export default function CourseGallery() {
                     <th scope="col">Lehrername</th>
                     <th scope="col">Schülername</th>
                     <th scope="col">Instrument</th>
+                    <th scope="col">Button</th>
                 </tr>
                 {listOfCourses.map((course) =>
                     <tr key={course.id}>
                         <td>{course.firstNameTeacher}</td>
                         <td>{course.firstNameStudent}</td>
                         <td>{course.instrument}</td>
-                        <button onClick={() => deleteCourse(course.id)}>Löschen</button>
+                        <td><button onClick={() => deleteCourse(course.id)}>Löschen</button></td>
                     </tr>)}
                 </thead>
             </table>
