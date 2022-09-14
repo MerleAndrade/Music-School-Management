@@ -4,11 +4,11 @@
 }
 
 h1 {
-    font:25px "Poppins", sans-serif;
+    font: 25px "Poppins", sans-serif;
 }
 
 .form-style-4 {
-    margin:10px auto;
+    margin: 10px auto;
     max-width: 400px;
     padding: 20px 12px 10px 20px;
     font: 20px "Poppins", sans-serif;
@@ -21,32 +21,32 @@ h1 {
     margin: 10px 0 0 0;
 }
 
-.form-style-4 .required{
-    color:red;
+.form-style-4 .required {
+    color: red;
 }
 
-.form-style-4 .field-long{
+.form-style-4 .field-long {
     width: 100%;
 }
 
 
-.form-style-4 label{
-    margin:0 0 3px 0;
-    padding:0;
-    display:block;
+.form-style-4 label {
+    margin: 0 0 3px 0;
+    padding: 0;
+    display: block;
     font-weight: bold;
 }
 
-.form-style-4 input[type=submit], .form-style-1 input[type=button]{
+.form-style-4 input[type=submit], .form-style-1 input[type=button] {
     background: #486f73;
     padding: 8px 15px 8px 15px;
     border: none;
     color: #fff;
 }
 
-.form-style-4 input[type=submit]:hover, .form-style-1 input[type=button]:hover{
+.form-style-4 input[type=submit]:hover, .form-style-1 input[type=button]:hover {
     background: #E1694E;
-    box-shadow:none;
-    -moz-box-shadow:none;
-    -webkit-box-shadow:none;
+    box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
 }

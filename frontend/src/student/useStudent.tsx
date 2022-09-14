@@ -2,12 +2,13 @@ import {useEffect, useState} from "react";
 import axios from "axios";
 import {NewStudent, Student} from "./Student";
 
-export default function useStudent(){
+export default function useStudent() {
 
-    const[students, setStudents]= useState<Student[]> ([]);
+    const [students, setStudents] = useState<Student[]>([]);
 
     useEffect(() => {
-            getAllStudents()},
+            getAllStudents()
+        },
         []
     )
 
@@ -20,8 +21,10 @@ export default function useStudent(){
     const addStudent = (newStudent: NewStudent) => {
 
         return axios.post("/api/students", newStudent)
-            .then((response) => {getAllStudents()
-                return response.data})
+            .then((response) => {
+                getAllStudents()
+                return response.data
+            })
     }
 
     const deleteStudent = (id: string) => {
@@ -32,5 +35,5 @@ export default function useStudent(){
             .then(getAllStudents);
     }
 
-    return{students, addStudent, deleteStudent}
+    return {students, addStudent, deleteStudent}
 }

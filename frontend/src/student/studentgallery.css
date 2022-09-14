@@ -5,7 +5,8 @@ table {
 
 th[scope="col"] {
     background-color: #486f73;
-    color: #fff;}
+    color: #fff;
+}
 
 th, td {
     padding: 0.5rem;
