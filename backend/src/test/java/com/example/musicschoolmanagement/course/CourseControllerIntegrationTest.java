@@ -81,7 +81,6 @@ class CourseControllerIntegrationTest {
                         """));
     }
 
-
     @Test
     @DirtiesContext
     @DisplayName("DeleteCourseByNotExistingID")

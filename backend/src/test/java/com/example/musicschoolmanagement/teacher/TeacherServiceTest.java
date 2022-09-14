@@ -1,5 +1,6 @@
 package com.example.musicschoolmanagement.teacher;
 
+import com.example.musicschoolmanagement.course.Course;
 import com.example.musicschoolmanagement.teacher.NewTeacher;
 import com.example.musicschoolmanagement.teacher.Teacher;
 import com.example.musicschoolmanagement.teacher.TeacherRepo;
@@ -78,8 +79,20 @@ class TeacherServiceTest {
 
         // then
         verify(testTeacherRepo).deleteById(testTeacher.id());
-
     }
+
+    @Test
+    @DisplayName("DeleteTeacherDoesNotExist")
+    void deleteTeacherDoesNotExistTest() {
+        Teacher testTeacher = new Teacher("dfjlsdjfklj", "Felipe", null, null);
+        when(testTeacherRepo.existsById(testTeacher.id())).thenReturn(false);
+        doNothing().when(testTeacherRepo).deleteById(testTeacher.id());
+
+        testTeacherService.deleteTeacher(testTeacher.id());
+        verify(testTeacherRepo, times(0)).deleteById(testTeacher.id());
+    }
+
+
     @Test
     @DisplayName("GetAllInstruments")
     void getAllInstruments() {

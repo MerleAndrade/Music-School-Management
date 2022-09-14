@@ -1,3 +1,10 @@
-#Capstone
-[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=merleandrade_Music-School-Management-frontend&metric=sqale_index)](https://sonarcloud.io/summary/new_code?id=merleandrade_Music-School-Management-frontend)
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=merleandrade_Music-School-Management-frontend&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=merleandrade_Music-School-Management-frontend)
+# Music-School-Management
+
+Dieses Projekt soll die Verwaltung in einer Musikschule erheblich vereinfachen.
+
+
+Lehrer anlegen, Schüler anlegen und im Kurs matchen.
+
+Wichtig im Kurs: Hier werden nur die Instrumente angezeigt, die auch von Lehrern angeboten werden.
+
+Denn ein Kurs ohne passenden Lehrer ergibt keinen Sinn.
