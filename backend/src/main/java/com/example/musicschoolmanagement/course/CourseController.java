@@ -3,7 +3,6 @@ package com.example.musicschoolmanagement.course;
 import com.example.musicschoolmanagement.exceptions.CourseNotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -28,9 +27,8 @@ public class CourseController {
     }
 
     @DeleteMapping("{id}")
-    public ResponseEntity<Void> deleteCourse(@PathVariable String id) throws CourseNotFoundException {
-        boolean deleteSuccess = courseService.deleteCourse(id);
-        return new ResponseEntity<>(deleteSuccess ? HttpStatus.NO_CONTENT : HttpStatus.NOT_FOUND);
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteCourseById(@PathVariable String id) throws CourseNotFoundException {
+        courseService.deleteCourseById(id);
     }
-
 }

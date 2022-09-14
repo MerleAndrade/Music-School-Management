@@ -1,8 +1,6 @@
 package com.example.musicschoolmanagement.course;
 
-import com.example.musicschoolmanagement.student.Student;
-import com.example.musicschoolmanagement.teacher.NewTeacher;
-import com.example.musicschoolmanagement.teacher.Teacher;
+import com.example.musicschoolmanagement.exceptions.CourseNotFoundException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -49,28 +47,24 @@ class CourseServiceTest {
     }
 
     @Test
-    @DisplayName("DeleteCourse")
+    @DisplayName("DeleteCourseTestCourseExists")
     void deleteCourse() {
         //given
-        Course testCourse = new Course("sldkfjlsdkj", "Kontrabass", "Felipe", "Merle");
-        when(testCourseRepo.existsById(testCourse.id())).thenReturn(true);
-
+        when(testCourseRepo.existsById("1234")).thenReturn(true);
+        doNothing().when(testCourseRepo).deleteById("1234");
         //when
-        doNothing().when(testCourseRepo).deleteById(testCourse.id());
-        testCourseRepo.deleteById(testCourse.id());
-
+        testCourseService.deleteCourseById("1234");
         // then
-        verify(testCourseRepo).deleteById(testCourse.id());
+        verify(testCourseRepo).deleteById("1234");
     }
 
     @Test
     @DisplayName("DeleteCourseDoesNotExist")
     void deleteCourseDoesNotExistTest() {
-        Course testCourse = new Course("dfjlsdjfklj", "Kontrabass", null, null);
-        when(testCourseRepo.existsById(testCourse.id())).thenReturn(false);
-        doNothing().when(testCourseRepo).deleteById(testCourse.id());
+        //given
+        when(testCourseRepo.existsById("123")).thenReturn(false);
+        doNothing().when(testCourseRepo).deleteById("123");
 
-        testCourseService.deleteCourse(testCourse.id());
-        verify(testCourseRepo, times(0)).deleteById(testCourse.id());
+        Assertions.assertThrows(CourseNotFoundException.class, () -> testCourseService.deleteCourseById("123"));
     }
 }

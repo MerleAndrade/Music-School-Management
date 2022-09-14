@@ -1,8 +1,11 @@
 package com.example.musicschoolmanagement.course;
+
 import com.example.musicschoolmanagement.exceptions.CourseNotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
+
 @Service
 @AllArgsConstructor
 public class CourseService {
@@ -17,11 +20,9 @@ public class CourseService {
         return courseRepo.save(newCourse.withRandomId());
     }
 
-    public boolean deleteCourse(String id) throws CourseNotFoundException {
+    public void deleteCourseById(String id) throws CourseNotFoundException {
         if (courseRepo.existsById(id)) {
             courseRepo.deleteById(id);
-            return true;
-        }
-        return false;
+        } else throw new CourseNotFoundException(id);
     }
 }
