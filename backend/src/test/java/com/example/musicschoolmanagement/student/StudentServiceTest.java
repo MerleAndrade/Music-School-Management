@@ -1,5 +1,6 @@
 package com.example.musicschoolmanagement.student;
 
+import com.example.musicschoolmanagement.course.Course;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -61,6 +62,17 @@ class StudentServiceTest {
         // then
         verify(testStudentRepo).deleteById(testStudent.id());
 
+    }
+
+    @Test
+    @DisplayName("DeleteStudentDoesNotExist")
+    void deleteStudentDoesNotExistTest() {
+        Student testStudent = new Student("dfjlsdjfklj", "Karla", null, null);
+        when(testStudentRepo.existsById(testStudent.id())).thenReturn(false);
+        doNothing().when(testStudentRepo).deleteById(testStudent.id());
+
+        testStudentService.deleteStudent(testStudent.id());
+        verify(testStudentRepo, times(0)).deleteById(testStudent.id());
     }
 
     @Test
