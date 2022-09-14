@@ -108,7 +108,7 @@ class TeacherControllerIntegrationTest {
 
     @Test
     @DirtiesContext
-    @DisplayName("DeleteTeacher")
+    @DisplayName("DeleteTeacherByExistingID")
     void deleteTeacher() throws Exception {
         String saveResult = mockMvc.perform(post("/api/teachers")
                         .contentType(MediaType.APPLICATION_JSON)
@@ -133,6 +133,15 @@ class TeacherControllerIntegrationTest {
                         []
                         """));
 
+    }
+
+    @Test
+    @DirtiesContext
+    @DisplayName("DeleteTeacherByNotExistingID")
+    void deleteTeacherNoId() throws Exception {
+        String id = "111";
+        mockMvc.perform(MockMvcRequestBuilders.delete("http://localhost:8080/api/teachers/" + id))
+                .andExpect(status().is(404));
     }
 
     @Test
