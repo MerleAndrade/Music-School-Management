@@ -1,4 +1,5 @@
 package com.example.musicschoolmanagement.course;
+import com.example.musicschoolmanagement.exceptions.CourseNotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -16,7 +17,7 @@ public class CourseService {
         return courseRepo.save(newCourse.withRandomId());
     }
 
-    public boolean deleteCourse(String id) {
+    public boolean deleteCourse(String id) throws CourseNotFoundException {
         if (courseRepo.existsById(id)) {
             courseRepo.deleteById(id);
             return true;

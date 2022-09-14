@@ -1,5 +1,6 @@
 package com.example.musicschoolmanagement.student;
 
+import com.example.musicschoolmanagement.exceptions.StudentNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,7 +21,7 @@ public class StudentService {
         return studentRepo.save(newStudent.withRandomId());
     }
 
-    public boolean deleteStudent(String id) {
+    public boolean deleteStudent(String id) throws StudentNotFoundException {
         if (studentRepo.existsById(id)) {
             studentRepo.deleteById(id);
             return true;

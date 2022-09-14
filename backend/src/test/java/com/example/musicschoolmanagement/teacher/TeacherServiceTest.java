@@ -1,15 +1,9 @@
 package com.example.musicschoolmanagement.teacher;
 
-import com.example.musicschoolmanagement.course.Course;
-import com.example.musicschoolmanagement.teacher.NewTeacher;
-import com.example.musicschoolmanagement.teacher.Teacher;
-import com.example.musicschoolmanagement.teacher.TeacherRepo;
-import com.example.musicschoolmanagement.teacher.TeacherService;
+import com.example.musicschoolmanagement.exceptions.TeacherNotFoundException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -67,29 +61,25 @@ class TeacherServiceTest {
     }
 
     @Test
-    @DisplayName("DeleteTeacher")
+    @DisplayName("DeleteTeacherTestTeacherExists")
     void deleteTeacher() {
         //given
-        Teacher testTeacher = new Teacher("sldkfjlsdkj", "Felipe", "Andrade", "Kontrabass");
-        when(testTeacherRepo.existsById(testTeacher.id())).thenReturn(true);
-
+        when(testTeacherRepo.existsById("1234")).thenReturn(true);
+        doNothing().when(testTeacherRepo).deleteById("1234");
         //when
-        doNothing().when(testTeacherRepo).deleteById(testTeacher.id());
-        testTeacherRepo.deleteById(testTeacher.id());
-
+        testTeacherService.deleteTeacherById("1234");
         // then
-        verify(testTeacherRepo).deleteById(testTeacher.id());
+        verify(testTeacherRepo).deleteById("1234");
     }
 
     @Test
     @DisplayName("DeleteTeacherDoesNotExist")
     void deleteTeacherDoesNotExistTest() {
-        Teacher testTeacher = new Teacher("dfjlsdjfklj", "Felipe", null, null);
-        when(testTeacherRepo.existsById(testTeacher.id())).thenReturn(false);
-        doNothing().when(testTeacherRepo).deleteById(testTeacher.id());
+        //given
+        when(testTeacherRepo.existsById("123")).thenReturn(false);
+        doNothing().when(testTeacherRepo).deleteById("123");
 
-        testTeacherService.deleteTeacher(testTeacher.id());
-        verify(testTeacherRepo, times(0)).deleteById(testTeacher.id());
+        Assertions.assertThrows(TeacherNotFoundException.class, () -> testTeacherService.deleteTeacherById("123"));
     }
 
 

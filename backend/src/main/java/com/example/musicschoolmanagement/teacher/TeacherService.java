@@ -1,5 +1,6 @@
 package com.example.musicschoolmanagement.teacher;
 
+import com.example.musicschoolmanagement.exceptions.TeacherNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -21,12 +22,10 @@ public class TeacherService {
 
         return updatedTeacher;
     }
-    public boolean deleteTeacher (String id) {
+    public void deleteTeacherById (String id) throws TeacherNotFoundException {
         if (teacherRepo.existsById(id)) {
             teacherRepo.deleteById(id);
-            return true;
-        }
-        return false;
+        } else throw new TeacherNotFoundException(id);
     }
     public Set<String> getAllInstruments() {
         List<Teacher> teachers = getAllTeachers();
