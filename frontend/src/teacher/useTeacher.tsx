@@ -4,17 +4,21 @@ import {Teacher} from "./Teacher";
 import {useNavigate} from "react-router-dom";
 import {NewTeacher} from "./NewTeacher";
 
-export default function useTeacher(){
+export default function useTeacher() {
 
-    const[teachers, setTeachers]= useState<Teacher[]> ([]);
+    const [teachers, setTeachers] = useState<Teacher[]>([]);
     const navigate = useNavigate();
-    useEffect(() => {getAllTeachers()}, []);
+    useEffect(() => {
+        getAllTeachers()
+    }, []);
 
     const addTeacher = (newTeacher: NewTeacher) => {
 
         return axios.post("/api/teachers", newTeacher)
-            .then((response) => {getAllTeachers()
-                return response.data})
+            .then((response) => {
+                getAllTeachers()
+                return response.data
+            })
     }
 
     const getAllTeachers = () => {
@@ -23,7 +27,7 @@ export default function useTeacher(){
             .then((data) => setTeachers(data))
     }
 
-    const editTeacher = (teacher:Teacher)=>{
+    const editTeacher = (teacher: Teacher) => {
         axios.put("/api/teachers/" + teacher.id, teacher)
             .then(getAllTeachers)
     }
@@ -32,7 +36,7 @@ export default function useTeacher(){
         return axios.delete(`/api/teachers/${id}`)
             .then(() => navigate("/teachers"))
             .then(getAllTeachers);
-            }
+    }
 
-    return{teachers, addTeacher, deleteTeacher, editTeacher, getAllTeachers}
+    return {teachers, addTeacher, deleteTeacher, editTeacher, getAllTeachers}
 }

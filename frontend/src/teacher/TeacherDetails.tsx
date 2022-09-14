@@ -89,9 +89,11 @@ export default function TeacherDetails(props: TeacherDetailsProps) {
                 {props.teachers.map(teacher =>
                     <tr key={teacher.id}>
                         <SingleTeacher teacher={teacher}/>
-                        <td><Button sx={{backgroundColor: '#E1694E', marginLeft: '20px'}} variant="contained" size={"small"}
+                        <td><Button sx={{backgroundColor: '#E1694E', marginLeft: '20px'}} variant="contained"
+                                    size={"small"}
                                     onClick={() => handleClickOpen(teacher.id)}>Lehrer bearbeiten</Button></td>
-                        <td><Button sx={{backgroundColor: '#E1694E', marginLeft: '20px'}} variant="contained" size={"small"}
+                        <td><Button sx={{backgroundColor: '#E1694E', marginLeft: '20px'}} variant="contained"
+                                    size={"small"}
                                     onClick={() => props.deleteTeacher(teacher.id)}>Lehrer löschen</Button></td>
                     </tr>
                 )}
