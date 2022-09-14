@@ -2,7 +2,8 @@ import React, {useEffect, useState} from "react";
 import {Course} from "./Course";
 import axios from "axios";
 
-export default function CourseGallery() {
+
+export default function CourseGallery(){
 
     const [listOfCourses, setListOfCourses] = useState<Course[]>([]);
 
@@ -15,13 +16,13 @@ export default function CourseGallery() {
             .then((response) => response.data)
             .then((data) => setListOfCourses(data))
     }
-
     const deleteCourse = (id: string) => {
         return axios.delete(`/api/courses/${id}`)
             .then((response) => response.status)
             .catch(error => console.error(error))
             .then(loadAllCourses);
     }
+
 
     return (
         <span>
