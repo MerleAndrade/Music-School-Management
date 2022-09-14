@@ -7,6 +7,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 public class TeacherNotFoundException extends RuntimeException {
 
     public TeacherNotFoundException(String id) {
-        super("Teacher with Id " + id + " not found", null, false, false);
+        super("Teacher with Id " + id + " not found");
     }
 }

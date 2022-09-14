@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 public class StudentNotFoundException extends RuntimeException {
 
     public StudentNotFoundException(String id) {
-        super("Student with Id " + id + " not found", null, false, false);
+        super("Student with Id " + id + " not found");
     }
 }
 

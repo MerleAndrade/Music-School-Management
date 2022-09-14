@@ -7,6 +7,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 public class CourseNotFoundException extends RuntimeException {
 
     public CourseNotFoundException(String id) {
-        super("Course with Id " + id + " not found", null, false, false);
+        super("Course with Id " + id + " not found");
     }
 }
