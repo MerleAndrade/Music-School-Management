@@ -15,8 +15,6 @@ public class TeacherController {
 
     private final TeacherService teacherService;
 
-
-
     public TeacherController(TeacherService teacherService) {
         this.teacherService = teacherService;
     }
@@ -35,7 +33,7 @@ public class TeacherController {
     @PutMapping("/{id}")
     public ResponseEntity<Teacher> updatedTeacher(
             @PathVariable String id,
-            @RequestBody Teacher teacher){
+            @RequestBody Teacher teacher) {
         Teacher updatedTeacherDetails = teacherService.editTeacher(teacher);
         return ResponseEntity
                 .status(HttpStatus.OK)
@@ -44,20 +42,18 @@ public class TeacherController {
 
     @DeleteMapping("{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-
     public void deleteTeacherById(@PathVariable String id) throws TeacherNotFoundException {
-       teacherService.deleteTeacherById(id);
+        teacherService.deleteTeacherById(id);
     }
 
     @GetMapping("/instruments")
-    public Set<String> getAllInstruments()
-    {
+    public Set<String> getAllInstruments() {
         return teacherService.getAllInstruments();
     }
 
     @GetMapping("/firstnameteachers")
-    public Set<String> getAllFirstNamesTeacher()
-    {
+    public Set<String> getAllFirstNamesTeacher() {
         return teacherService.getAllFirstNamesTeacher();
     }
 }
+

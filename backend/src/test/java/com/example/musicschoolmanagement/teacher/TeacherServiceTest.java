@@ -4,6 +4,7 @@ import com.example.musicschoolmanagement.exceptions.TeacherNotFoundException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -106,4 +107,4 @@ class TeacherServiceTest {
         //then
         Assertions.assertEquals(expected, actual);
     }
-    }
+}

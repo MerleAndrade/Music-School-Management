@@ -1,6 +1,6 @@
 package com.example.musicschoolmanagement.student;
 
-import com.example.musicschoolmanagement.course.Course;
+import com.example.musicschoolmanagement.exceptions.StudentNotFoundException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -24,6 +24,7 @@ class StudentServiceTest {
             new Student("456", "Linus", "Müller", "Schlagzeug"),
             new Student("789", "Josephine", "Huber", "Gesang")
     );
+
     @Test
     @DisplayName("ListOfAllStudents")
     void getAllStudents() {
@@ -49,30 +50,25 @@ class StudentServiceTest {
     }
 
     @Test
-    @DisplayName("DeleteStudent")
+    @DisplayName("DeleteStudentTestStudentExists")
     void deleteStudent() {
         //given
-        Student testStudent = new Student("sldkfjlsdkj", "Felipe", "Andrade", "Kontrabass");
-        when(testStudentRepo.existsById(testStudent.id())).thenReturn(true);
-
+        when(testStudentRepo.existsById("1234")).thenReturn(true);
+        doNothing().when(testStudentRepo).deleteById("1234");
         //when
-        doNothing().when(testStudentRepo).deleteById(testStudent.id());
-        testStudentRepo.deleteById(testStudent.id());
-
+        testStudentService.deleteStudentById("1234");
         // then
-        verify(testStudentRepo).deleteById(testStudent.id());
-
+        verify(testStudentRepo).deleteById("1234");
     }
 
     @Test
     @DisplayName("DeleteStudentDoesNotExist")
     void deleteStudentDoesNotExistTest() {
-        Student testStudent = new Student("dfjlsdjfklj", "Karla", null, null);
-        when(testStudentRepo.existsById(testStudent.id())).thenReturn(false);
-        doNothing().when(testStudentRepo).deleteById(testStudent.id());
+        //given
+        when(testStudentRepo.existsById("123")).thenReturn(false);
+        doNothing().when(testStudentRepo).deleteById("123");
 
-        testStudentService.deleteStudent(testStudent.id());
-        verify(testStudentRepo, times(0)).deleteById(testStudent.id());
+        Assertions.assertThrows(StudentNotFoundException.class, () -> testStudentService.deleteStudentById("123"));
     }
 
     @Test

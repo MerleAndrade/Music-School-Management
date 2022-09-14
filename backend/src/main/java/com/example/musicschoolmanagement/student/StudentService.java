@@ -10,9 +10,11 @@ import java.util.stream.Collectors;
 @Service
 public class StudentService {
     private final StudentRepo studentRepo;
+
     public StudentService(StudentRepo studentRepo) {
         this.studentRepo = studentRepo;
     }
+
     public List<Student> getAllStudents() {
         return studentRepo.findAll();
     }
@@ -21,12 +23,10 @@ public class StudentService {
         return studentRepo.save(newStudent.withRandomId());
     }
 
-    public boolean deleteStudent(String id) throws StudentNotFoundException {
+    public void deleteStudentById(String id) throws StudentNotFoundException {
         if (studentRepo.existsById(id)) {
             studentRepo.deleteById(id);
-            return true;
-        }
-        return false;
+        } else throw new StudentNotFoundException(id);
     }
 
     public Set<String> getAllFirstNamesStudent() {
@@ -36,3 +36,4 @@ public class StudentService {
                 .collect(Collectors.toSet());
     }
 }
+
