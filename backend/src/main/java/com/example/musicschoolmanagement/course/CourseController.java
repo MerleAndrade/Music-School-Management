@@ -1,8 +1,5 @@
-package com.example.musicschoolmanagement.controller;
+package com.example.musicschoolmanagement.course;
 
-import com.example.musicschoolmanagement.course.Course;
-import com.example.musicschoolmanagement.course.CourseService;
-import com.example.musicschoolmanagement.course.NewCourse;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

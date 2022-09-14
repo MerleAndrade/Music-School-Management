@@ -1,8 +1,6 @@
-package com.example.musicschoolmanagement.controller;
+package com.example.musicschoolmanagement.teacher;
 
-import com.example.musicschoolmanagement.teacher.NewTeacher;
-import com.example.musicschoolmanagement.teacher.Teacher;
-import com.example.musicschoolmanagement.teacher.TeacherService;
+import com.example.musicschoolmanagement.exceptions.TeacherNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -45,7 +43,7 @@ public class TeacherController {
     }
 
     @DeleteMapping("{id}")
-    public ResponseEntity<Void> deleteTeacher(@PathVariable String id) {
+    public ResponseEntity<Void> deleteTeacher(@PathVariable String id) throws TeacherNotFoundException {
         boolean deleteSuccess = teacherService.deleteTeacher(id);
         return new ResponseEntity<>(deleteSuccess ? HttpStatus.NO_CONTENT : HttpStatus.NOT_FOUND);
     }

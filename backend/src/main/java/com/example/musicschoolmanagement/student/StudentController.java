@@ -1,5 +1,6 @@
-package com.example.musicschoolmanagement.controller;
+package com.example.musicschoolmanagement.student;
 
+import com.example.musicschoolmanagement.exceptions.StudentNotFoundException;
 import com.example.musicschoolmanagement.student.NewStudent;
 import com.example.musicschoolmanagement.student.Student;
 import com.example.musicschoolmanagement.student.StudentService;
@@ -33,7 +34,7 @@ public class StudentController {
     }
 
     @DeleteMapping("{id}")
-    public ResponseEntity<Void> deleteStudent(@PathVariable String id) {
+    public ResponseEntity<Void> deleteStudent(@PathVariable String id) throws StudentNotFoundException {
         boolean deleteSuccess = studentService.deleteStudent(id);
         return new ResponseEntity<>(deleteSuccess ? HttpStatus.NO_CONTENT : HttpStatus.NOT_FOUND);
     }
