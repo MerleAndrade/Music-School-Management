@@ -1,8 +1,6 @@
-package com.example.musicschoolmanagement.controller;
+package com.example.musicschoolmanagement.teacher;
 
-import com.example.musicschoolmanagement.teacher.NewTeacher;
-import com.example.musicschoolmanagement.teacher.Teacher;
-import com.example.musicschoolmanagement.teacher.TeacherService;
+import com.example.musicschoolmanagement.exceptions.TeacherNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,8 +14,6 @@ import java.util.Set;
 public class TeacherController {
 
     private final TeacherService teacherService;
-
-
 
     public TeacherController(TeacherService teacherService) {
         this.teacherService = teacherService;
@@ -37,7 +33,7 @@ public class TeacherController {
     @PutMapping("/{id}")
     public ResponseEntity<Teacher> updatedTeacher(
             @PathVariable String id,
-            @RequestBody Teacher teacher){
+            @RequestBody Teacher teacher) {
         Teacher updatedTeacherDetails = teacherService.editTeacher(teacher);
         return ResponseEntity
                 .status(HttpStatus.OK)
@@ -45,19 +41,19 @@ public class TeacherController {
     }
 
     @DeleteMapping("{id}")
-    public ResponseEntity<Void> deleteTeacher(@PathVariable String id) {
-        boolean deleteSuccess = teacherService.deleteTeacher(id);
-        return new ResponseEntity<>(deleteSuccess ? HttpStatus.NO_CONTENT : HttpStatus.NOT_FOUND);
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteTeacherById(@PathVariable String id) throws TeacherNotFoundException {
+        teacherService.deleteTeacherById(id);
     }
+
     @GetMapping("/instruments")
-    public Set<String> getAllInstruments()
-    {
+    public Set<String> getAllInstruments() {
         return teacherService.getAllInstruments();
     }
 
     @GetMapping("/firstnameteachers")
-    public Set<String> getAllFirstNamesTeacher()
-    {
+    public Set<String> getAllFirstNamesTeacher() {
         return teacherService.getAllFirstNamesTeacher();
     }
 }
+
