@@ -39,7 +39,9 @@ export default function CourseGallery() {
                         <td>{course.firstNameTeacher}</td>
                         <td>{course.firstNameStudent}</td>
                         <td>{course.instrument}</td>
-                        <td><button onClick={() => deleteCourse(course.id)}>Löschen</button></td>
+                        <td>
+                            <button onClick={() => deleteCourse(course.id)}>Löschen</button>
+                        </td>
                     </tr>)}
                 </thead>
             </table>

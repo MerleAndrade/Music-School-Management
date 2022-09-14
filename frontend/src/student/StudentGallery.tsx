@@ -3,16 +3,16 @@ import "./studentgallery.css"
 import React from "react";
 
 type StudentGalleryProps = {
-    students : Student[],
-    deleteStudent : (id: string) => Promise<void>,
+    students: Student[],
+    deleteStudent: (id: string) => Promise<void>,
 }
 
-export default function StudentGallery (props: StudentGalleryProps){
+export default function StudentGallery(props: StudentGalleryProps) {
 
 
-    return(
+    return (
         <>
-            <h2>Schülerliste</h2>
+            <h2 id={"container"}>Schülerliste</h2>
             <table>
                 <thead>
                 <tr>
@@ -26,10 +26,12 @@ export default function StudentGallery (props: StudentGalleryProps){
                         <td>{student.firstNameStudent}</td>
                         <td>{student.lastNameStudent}</td>
                         <td>{student.instrumentStudent}</td>
-                        <td><button onClick={() => props.deleteStudent(student.id)}>Löschen</button></td>
+                        <td>
+                            <button onClick={() => props.deleteStudent(student.id)}>Löschen</button>
+                        </td>
                     </tr>
                 )}
-            </thead>
+                </thead>
             </table>
         </>
     )

@@ -7,24 +7,26 @@
     width: 100%;
     background-color: #E1694E;
     position: fixed;
-    flex:1
+    flex: 1
 }
+
 .footer-text {
     text-align: center;
-    word-spacing:5px;
+    word-spacing: 5px;
     color: black;
-    font-family:"Poppins", sans-serif;
+    font-family: "Poppins", sans-serif;
     font-size: 12px;
 }
+
 main {
-    display:flex;
-    min-height:100vh;
+    display: flex;
+    min-height: 100vh;
 }
 
 h5 {
     text-align: center;
-    word-spacing:5px;
+    word-spacing: 5px;
     color: black;
-    font-family:"Poppins", sans-serif;
+    font-family: "Poppins", sans-serif;
     font-size: 12px;
 }

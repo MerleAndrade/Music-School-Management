@@ -9,17 +9,17 @@ import {NewTeacher} from "../teacher/NewTeacher";
 import AddCourse from "../course/AddCourse";
 import {Course, NewCourse} from "../course/Course";
 
-type HomeProps ={
+type HomeProps = {
 
-    addTeacher: (newTeacher: NewTeacher) => Promise <Teacher>;
-    addStudent: (newStudent: NewStudent) => Promise <Student>;
+    addTeacher: (newTeacher: NewTeacher) => Promise<Teacher>;
+    addStudent: (newStudent: NewStudent) => Promise<Student>;
     instruments: string[];
     firstNameTeachers: string[],
     firstNameStudents: string[],
     addInstruments: (newCourse: NewCourse) => Promise<Course>;
-    getAllTeachers: (teacher: Teacher) =>void,
+    getAllTeachers: (teacher: Teacher) => void,
 }
-export default function Home (props: HomeProps) {
+export default function Home(props: HomeProps) {
 
     const [tab, setTab] = useState("Home");
 
@@ -30,19 +30,20 @@ export default function Home (props: HomeProps) {
     return (
         <nav>
             <div className={"wrapper"}>
-            <NavLink onClick={() => setTab("Lehrer")} to={'/teachers'}>
-                <button className="button">Lehrerliste</button>
-            </NavLink>
-            <NavLink onClick={() => setTab("Student")} to={'/students'}>
-                <button className="button">Schülerliste</button>
-            </NavLink>
-            <NavLink onClick={() => setTab("Course")} to={'/courses'}>
-                <button className="button">Kursliste</button>
-            </NavLink>
+                <NavLink onClick={() => setTab("Lehrer")} to={'/teachers'}>
+                    <button className="button">Lehrerliste</button>
+                </NavLink>
+                <NavLink onClick={() => setTab("Student")} to={'/students'}>
+                    <button className="button">Schülerliste</button>
+                </NavLink>
+                <NavLink onClick={() => setTab("Course")} to={'/courses'}>
+                    <button className="button">Kursliste</button>
+                </NavLink>
             </div>
             <AddNewTeacher addNewTeacher={props.addTeacher}/>
             <AddStudentFormular addStudent={props.addStudent}/>
-            <AddCourse instruments={props.instruments} addInstruments={props.addInstruments} firstNameTeachers={props.firstNameTeachers} firstNameStudents={props.firstNameStudents}/>
+            <AddCourse instruments={props.instruments} addInstruments={props.addInstruments}
+                       firstNameTeachers={props.firstNameTeachers} firstNameStudents={props.firstNameStudents}/>
         </nav>
     )
 }
