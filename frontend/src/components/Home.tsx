@@ -4,7 +4,7 @@ import {Teacher} from "../teacher/Teacher";
 import AddNewTeacher from "../teacher/AddNewTeacher";
 import "./home.css"
 import {NewStudent, Student} from "../student/Student";
-import AddStudentFormular from "../student/AddStudentFormular";
+import AddNewStudent from "../student/AddNewStudent";
 import {NewTeacher} from "../teacher/NewTeacher";
 import AddCourse from "../course/AddCourse";
 import {Course, NewCourse} from "../course/Course";
@@ -41,7 +41,7 @@ export default function Home(props: HomeProps) {
                 </NavLink>
             </div>
             <AddNewTeacher addNewTeacher={props.addTeacher}/>
-            <AddStudentFormular addStudent={props.addStudent}/>
+            <AddNewStudent addStudent={props.addStudent}/>
             <AddCourse instruments={props.instruments} addInstruments={props.addInstruments}
                        firstNameTeachers={props.firstNameTeachers} firstNameStudents={props.firstNameStudents}/>
         </nav>

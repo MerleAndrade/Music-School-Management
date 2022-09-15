@@ -2,13 +2,13 @@ import {ChangeEvent, FormEvent, useState} from "react";
 import {toast} from "react-toastify";
 import {NewStudent, Student} from "./Student";
 import 'react-toastify/dist/ReactToastify.css';
-import "./addstudentformular.css"
+import "./addnewstudent.css"
 
 type AddStudentFormularProps = {
     addStudent: (newStudent: NewStudent) => Promise<Student>;
 }
 
-export default function AddStudentFormular(props: AddStudentFormularProps) {
+export default function AddNewStudent(props: AddStudentFormularProps) {
 
     const [firstNameStudent, setFirstNameStudent] = useState<string>("");
     const [lastNameStudent, setLastNameStudent] = useState<string>("");
