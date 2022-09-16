@@ -6,7 +6,7 @@ import "./home.css"
 import {NewStudent, Student} from "../student/Student";
 import AddNewStudent from "../student/AddNewStudent";
 import {NewTeacher} from "../teacher/NewTeacher";
-import AddCourse from "../course/AddCourse";
+import AddNewCourse from "../course/AddNewCourse";
 import {Course, NewCourse} from "../course/Course";
 
 type HomeProps = {
@@ -42,8 +42,8 @@ export default function Home(props: HomeProps) {
             </div>
             <AddNewTeacher addNewTeacher={props.addTeacher}/>
             <AddNewStudent addStudent={props.addStudent}/>
-            <AddCourse instruments={props.instruments} addInstruments={props.addInstruments}
-                       firstNameTeachers={props.firstNameTeachers} firstNameStudents={props.firstNameStudents}/>
+            <AddNewCourse instruments={props.instruments} addInstruments={props.addInstruments}
+                          firstNameTeachers={props.firstNameTeachers} firstNameStudents={props.firstNameStudents}/>
         </nav>
     )
 }

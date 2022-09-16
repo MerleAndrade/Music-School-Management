@@ -1,6 +1,6 @@
 import {ChangeEvent, FormEvent, useState} from "react";
 import * as React from "react";
-import "./addcourse.css"
+import "./addnewcourse.css"
 import {Course, NewCourse} from "./Course";
 import {toast} from "react-toastify";
 
@@ -12,7 +12,7 @@ type AddCourseProps = {
     firstNameStudents: string[],
 }
 
-export default function AddCourse(props: AddCourseProps) {
+export default function AddNewCourse(props: AddCourseProps) {
 
     const [instrumentName, setInstrumentName] = useState<string>("DEFAULT");
     const [teacherFirstName, setTeacherFirstName] = useState<string>("DEFAULT");
@@ -33,7 +33,7 @@ export default function AddCourse(props: AddCourseProps) {
     const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
-        if (!instrumentName || !teacherFirstName || !studentFirstName) {
+        if (instrumentName === "DEFAULT" || teacherFirstName === "DEFAULT"  || studentFirstName === "DEFAULT" ) {
             toast.error("Alle Felder müssen bitte ausgefüllt werden!")
         } else {
 
