@@ -2,16 +2,21 @@ import {useEffect, useState} from "react";
 import axios from "axios";
 import {NewCourse} from "./Course";
 
-
-export default function useCourse(){
+export default function useCourse() {
 
     const [instruments, setInstruments] = useState<string[]>([]);
     const [firstNameTeachers, setFirstNameTeachers] = useState<string[]>([]);
     const [firstNameStudents, setFirstNameStudents] = useState<string[]>([]);
 
-    useEffect(() => {getAllInstruments()}, [])
-    useEffect(() => {getAllFirstNameTeacher()}, [])
-    useEffect(() => {getAllFirstNameStudent()}, [])
+    useEffect(() => {
+        getAllInstruments()
+    }, [])
+    useEffect(() => {
+        getAllFirstNameTeacher()
+    }, [])
+    useEffect(() => {
+        getAllFirstNameStudent()
+    }, [])
 
     const getAllInstruments = () => {
         axios.get("/api/teachers/instruments")
@@ -33,12 +38,10 @@ export default function useCourse(){
 
     const addInstruments = (newCourse: NewCourse) => {
         return axios.post("/api/courses", newCourse)
-            .then((response) => {getAllInstruments()
-            return response.data})
-            .then((response) => {getAllFirstNameTeacher()
-                return response.data})
-            .then((response) => {getAllFirstNameStudent()
-                return response.data})
+            .then((response) => {
+                getAllInstruments()
+                return response.data
+            })
     }
 
     return {instruments, addInstruments, firstNameTeachers, firstNameStudents}
